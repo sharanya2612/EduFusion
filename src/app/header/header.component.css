@@ -1,0 +1,56 @@
+header {
+    background-color: #FCF7F2;
+  }
+  
+  .banner {
+    padding: 4rem 0;
+    background-color: #FCF7F2;
+  }
+  
+  .banner h1 {
+    margin: 0;
+    font-size: 6rem; /* Increased font size */
+    font-family: 'Lora', serif; /* Lora font style */
+  }
+
+  .gradient-text {
+  background: linear-gradient(90deg, #FB0079, #feb47b);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+  
+  .banner .lead {
+    font-size: 2rem; /* Increased font size */
+    margin: 1rem 0;
+    color: #FF9C30;
+    font-family: 'Lora', serif; /* Lora font style */
+  }
+  
+  .btn-gradient {
+    background: linear-gradient(45deg, #FB0079, #FF9C30);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 1rem 2.5rem; /* Increased button size */
+    font-size: 1.2rem; /* Increased font size */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added shadow effect */
+  }
+  
+  .btn-gradient:hover {
+    opacity: 0.8;
+  }
+  
+  .btn-custom {
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 30px;
+    padding: 1rem 2.5rem; /* Increased button size */
+    font-size: 1.2rem; /* Increased font size */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added shadow effect */
+  }
+  
+  .btn-custom:hover {
+    opacity: 0.7;
+  }
+  

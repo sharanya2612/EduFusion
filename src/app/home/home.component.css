@@ -1,0 +1,28 @@
+#about,
+#services,
+#trainers,
+#testimonials,
+#contact {
+  padding: 60px 20px; /* Add padding to each section */
+  margin-bottom: 40px; /* Add space between sections */
+}
+
+#about {
+  background-color: #FFFEFA; /* Optional: Add background color for better separation */
+}
+
+#services {
+  background-color: #FCF7F2; /* Optional: Add background color for better separation */
+}
+
+#trainers {
+  background-color: #FCF7F2; /* Optional: Add background color for better separation */
+}
+
+#testimonials {
+  background-color: #eed7d7; /* Optional: Add background color for better separation */
+}
+
+#contact {
+  background-color: #f9f9f9; /* Optional: Add background color for better separation */
+}

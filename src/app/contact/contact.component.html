@@ -1,0 +1,67 @@
+<div class="contact-section">
+    <div class="map-container">
+      <iframe
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15558.740765992938!2d74.85031227749285!3d12.863598268396137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba35bcd0bdc7619%3A0x47f98562f6bf8083!2sKankanady%2C%20Mangaluru%2C%20Karnataka!5e0!3m2!1sen!2sin!4v1737037473200!5m2!1sen!2sin"
+        width="600"
+        height="450"
+        style="border: 0;"
+        allowfullscreen=""
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+    <div class="contact-form">
+      <h2>Hold on, type hello!</h2>
+      <p>We would love to hear from you and have a small chat.</p>
+      <p>
+        <span><i class="fa fa-envelope"></i> {{ companyemail }}</span>
+        <span><i class="fa fa-phone"></i> +1-202-555-0127</span>
+      </p>
+      <form #f="ngForm" novalidate (ngSubmit)="save(f.value, f.form.valid)">
+        <div>
+          <label for="name">Name</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="Your name here"
+            required
+            minlength="5"
+            [(ngModel)]="user.name"
+            #name="ngModel"
+            class="form-control"
+          />
+          <small [hidden]="name.valid || (name.pristine && !f.submitted)" class="text-danger">
+            Name is required (minimum 5 characters).
+          </small>
+        </div>
+        <div>
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="Your email here"
+            required
+            [(ngModel)]="user.email"
+            #email="ngModel"
+            class="form-control"
+          />
+          <small [hidden]="email.valid || (email.pristine && !f.submitted)" class="text-danger">
+            Please provide a valid email address.
+          </small>
+        </div>
+        <div>
+          <label for="message">Message</label>
+          <textarea
+            id="message"
+            name="message"
+            placeholder="Your message here"
+            [(ngModel)]="user.message"
+            class="form-control"
+          ></textarea>
+        </div>
+        <button type="submit" class="btn btn-gradient">Send Message</button>
+      </form>
+    </div>
+  </div>

@@ -1,0 +1,36 @@
+.navbar {
+  background-color: #FCF7F2;
+  position: fixed; /* Fixed position */
+  width: 100%; /* Full width */
+  top: 0; /* Stick to the top */
+  z-index: 1000; /* Ensure it stays above other content */
+}
+
+
+.navbar-nav .nav-link {
+  color: black;
+  font-family: 'Lora', serif;
+  margin: 6px;
+}
+
+.navbar-nav .nav-link:hover {
+  background-color: #575757;
+  color: white;
+}
+
+.dropdown-menu{
+  background-color: #FCF7F2;
+}
+
+.dropdown-menu .dropdown-item {
+  color: black;
+}
+
+.dropdown-menu .dropdown-item:hover {
+  background-color: #575757;
+  color: white;
+}
+
+.logo {
+  height: 70px;
+}

@@ -1,0 +1,48 @@
+.contact-section {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .map-container {
+    width: 50%;
+    height: 400px;
+  }
+  
+  .contact-form {
+    width: 45%;
+    padding: 20px;
+  }
+  
+  .contact-form h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .contact-form p {
+    margin-bottom: 20px;
+  }
+  
+  .contact-form form div {
+    margin-bottom: 15px;
+  }
+  
+  .contact-form form input,
+  .contact-form form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 25px; /* Rounded corners */
+  }
+  
+  .contact-form form button {
+    padding: 10px 20px;
+    background: linear-gradient(to right, #ff7e5f, #feb47b); /* Gradient background */
+    color: white;
+    border: none;
+    border-radius: 25px; /* Rounded corners */
+    cursor: pointer;
+  }
+  
+  .text-danger {
+    color: red; /* Validation messages in red */
+  }

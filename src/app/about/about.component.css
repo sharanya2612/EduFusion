@@ -1,0 +1,53 @@
+.about-edufusion {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    /* Arrange items in a column */
+    align-items: center;
+    /* Center the content horizontally */
+    height: 100vh;
+    /* Full viewport height */
+}
+
+.about-edufusion h1 {
+    color: #FB0079;
+    /* Pink color for the heading */
+    margin-bottom: 30px;
+    /* Space below the heading */
+}
+
+.content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Center the content horizontally */
+}
+
+.image-section {
+    position: relative;
+    width: 30%;
+}
+
+.image-section img {
+    width: 100%;
+    height: auto;
+    border-radius: 15px;
+    /* Rounded corners for images */
+}
+
+.overlay-text {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    background-color: rgba(255, 0, 128, 0.8);
+    color: white;
+    padding: 10px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+
+.text-section {
+    width: 50%;
+    padding-left: 30px;
+    text-align: justify;
+}

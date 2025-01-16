@@ -1,0 +1,15 @@
+<div class="team-section container py-5">
+    <h2 class="text-center mb-4">Wonder who we are?</h2>
+    <div class="row justify-content-center">
+      <div *ngFor="let member of teamMembers" class="col-md-3 mb-3">
+        <div class="card h-100">
+          <img [src]="member.image" class="card-img-top" alt="{{ member.name }}">
+          <div class="card-body">
+            <h3 class="card-title">I am {{ member.name }}</h3>
+            <p class="card-text">{{ member.role }}</p>
+            <p class="card-text">{{ member.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

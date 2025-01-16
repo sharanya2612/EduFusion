@@ -1,0 +1,32 @@
+.team-section {
+    text-align: center;
+    padding: 20px;
+  }
+
+  h2{
+    font-weight: 300;
+    color:  #FB0079
+  }
+   
+  .team-members {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+  }
+   
+  .card {
+    width: 250px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: left;
+    border-radius: 10px;
+  }
+   
+  .card img {
+    width: 100%;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+   
+  .card-content {
+    padding: 15px;
+  }
