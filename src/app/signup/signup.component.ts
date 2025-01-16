@@ -50,6 +50,7 @@ export class SignupComponent {
 
   onSubmit() {
     if (this.signupForm.valid) {
+      alert('Successfully Signed Up');
       console.log('Form Submitted!', this.signupForm.value);
       this.router.navigate(['/login']);
     }

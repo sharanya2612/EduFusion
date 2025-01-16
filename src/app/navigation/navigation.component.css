@@ -11,6 +11,7 @@
   color: black;
   font-family: 'Lora', serif;
   margin: 6px;
+  font-weight: 500;
 }
 
 .navbar-nav .nav-link:hover {
@@ -32,5 +33,5 @@
 }
 
 .logo {
-  height: 70px;
+  height: 80px;
 }

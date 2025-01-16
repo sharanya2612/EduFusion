@@ -3,6 +3,11 @@
   padding: 20px;
 }
 
+h2{
+  font-weight: bold;
+  color:  #FB0079
+}
+
 .services-container {
   display: flex;
   justify-content: center; /* Center the cards */
@@ -14,8 +19,7 @@
   background-color: #f8f8f8;
   border: 1px solid #ddd;
   padding: 20px;
-  width: 20%; /* Make the cards thinner */
-  height: 300px; /* Increased height */
+  width: 18%; /* Make the cards thinner */
   border-radius: 8px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   text-align: left;
@@ -32,7 +36,7 @@
 }
 
 .service-card h3 {
-  color: #e10098;
+  color: #FB0079;
 }
 
 .service-card p {
@@ -41,7 +45,7 @@
 }
 
 .contact-link {
-  color: #e10098;
+  color: #FB0079;
   font-weight: bold;
   text-decoration: none;
   position: relative; /* Ensure the contact link is above the full-card-link */
@@ -60,4 +64,11 @@
   height: 100%;
   z-index: 1;
   opacity: 0;
+}
+
+.service-icon {
+  font-size: 2rem; /* Adjust the size as needed */
+  color: #FB0079; /* Pink color for the icons */
+  display: block;
+  margin-bottom: 10px;
 }

@@ -97,7 +97,7 @@
   
       <div class="form-group">
         <input type="checkbox" formControlName="terms" id="terms">
-        <label for="terms">I agree to the <a href="#">Terms and Conditions</a> <span class="required">*</span></label>
+        <label for="terms">I agree to the <a href="#" class="terms">Terms and Conditions</a></label>
       </div>
       <div *ngIf="signupForm.controls['terms'].invalid && (signupForm.controls['terms'].dirty || signupForm.controls['terms'].touched)" class="alert alert-danger">
         <div *ngIf="signupForm.controls['terms'].errors?.['required']">
@@ -105,10 +105,12 @@
         </div>
       </div>
   
-      <button type="submit" [disabled]="signupForm.pristine || signupForm.invalid" class="btn btn-success">
-        Sign Up
-      </button>
+      <div class="button-container">
+        <button type="submit" [disabled]="signupForm.pristine || signupForm.invalid" class="btn btn-gradient">
+          Sign Up
+        </button>
+      </div>
     </form>
     <br />
-    <p>Already have an account? <a href="/login">Login here</a></p>
+    <p>Already have an account? <a routerLink="/login" class="signup-link">Login here</a></p>
   </div>

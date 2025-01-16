@@ -2,40 +2,36 @@
     padding: 20px;
     display: flex;
     flex-direction: column;
-    /* Arrange items in a column */
     align-items: center;
-    /* Center the content horizontally */
     height: 100vh;
-    /* Full viewport height */
-}
-
-.about-edufusion h1 {
+  }
+  
+  .about-edufusion h1 {
     color: #FB0079;
-    /* Pink color for the heading */
+    font-weight: bold;
     margin-bottom: 30px;
-    /* Space below the heading */
-}
-
-.content {
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+  .content {
     display: flex;
     align-items: center;
     justify-content: center;
-    /* Center the content horizontally */
-}
-
-.image-section {
+  }
+  
+  .image-section {
     position: relative;
     width: 30%;
-}
-
-.image-section img {
+    animation: slideInLeft 2s ease-in-out;
+  }
+  
+  .image-section img {
     width: 100%;
     height: auto;
     border-radius: 15px;
-    /* Rounded corners for images */
-}
-
-.overlay-text {
+  }
+  
+  .overlay-text {
     position: absolute;
     bottom: 20px;
     left: 20px;
@@ -44,10 +40,52 @@
     padding: 10px;
     font-weight: bold;
     border-radius: 5px;
-}
-
-.text-section {
+  }
+  
+  .text-section {
     width: 50%;
     padding-left: 30px;
     text-align: justify;
-}
+    animation: slideInRight 2s ease-in-out;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  
+  /* Adding animation classes */
+  .animate-heading {
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+  .animate-image {
+    animation: slideInLeft 2s ease-in-out;
+  }
+  
+  .animate-text {
+    animation: slideInRight 2s ease-in-out;
+  }

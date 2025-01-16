@@ -3,7 +3,7 @@ header {
   }
   
   .banner {
-    padding: 4rem 0;
+    padding: 5rem 0;
     background-color: #FCF7F2;
   }
   
@@ -14,13 +14,14 @@ header {
   }
 
   .gradient-text {
-  background: linear-gradient(90deg, #FB0079, #feb47b);
+  background: linear-gradient(45deg, #FB0079, #feb47b);
+  font-weight: bold;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
   
   .banner .lead {
-    font-size: 2rem; /* Increased font size */
+    font-size: 2.5rem; /* Increased font size */
     margin: 1rem 0;
     color: #FF9C30;
     font-family: 'Lora', serif; /* Lora font style */

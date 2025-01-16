@@ -25,6 +25,7 @@ export class LoginComponent {
 
   onSubmit() {
     if (this.loginForm.valid) {
+      alert("Login success!");
       console.log('Form Submitted!', this.loginForm.value);
     }
   }

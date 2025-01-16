@@ -1,34 +1,63 @@
 .required {
-    color: red;
-  }
-  
-  .form-group {
-    margin-bottom: 15px;
-  }
-  
-  .alert {
-    margin-top: 5px;
-  }
-  
-  .container {
-    max-width: 500px;
-    margin: 120px auto 0; /* Adjust the top margin to push the form down */
-    padding: 30px;
-    background-color: #f9f9f9;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
-  }
-  
-  h1 {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .btn {
-    width: 100%;
-  }
+  color: red;
+}
 
-  .form-group input[type="checkbox"] {
-    margin-right: 8px; /* Adjust the value as needed */
-  }
+.form-group {
+  margin-bottom: 15px;
+}
+
+.alert {
+  margin-top: 5px;
+}
+
+.container {
+  max-width: 500px;
+  margin: 120px auto 0; /* Adjust the top margin to push the form down */
+  padding: 30px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 20px;
+  color: #FB0079;
+  font-weight: bold;
+}
+
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px; /* Rounded corners */
+}
+
+.button-container {
+  text-align: center; /* Center the button */
+}
+
+.btn {
+  width: 25%;
+  padding: 10px 20px;
+  background: linear-gradient(to right, #FB0079, #FF9C30); /* Gradient background */
+  color: white;
+  border: none;
+  border-radius: 25px; /* Rounded corners */
+  cursor: pointer;
+}
+
+.signup-link,.terms {
+  color: #FB0079; /* Stylish link color */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.signup-link:hover {
+  text-decoration: underline; /* Underline on hover */
+}
+
+.form-group input[type="checkbox"] {
+  margin-right: 8px; /* Adjust the value as needed */
+}
