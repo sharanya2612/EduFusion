@@ -5,12 +5,15 @@
         <label>Name: <span class="required">*</span></label>
         <input class="form-control" formControlName="name" type="text">
       </div>
-      <div *ngIf="signupForm.controls['name'].invalid && (signupForm.controls['name'].dirty || signupForm.controls['name'].touched)" class="alert alert-danger">
+      <div *ngIf="signupForm.controls['name'].invalid && (signupForm.controls['name'].dirty || signupForm.controls['name'].touched)" class="text-danger">
         <div *ngIf="signupForm.controls['name'].errors?.['required']">
           Name is required.
         </div>
         <div *ngIf="signupForm.controls['name'].errors?.['minlength']">
           Name must be at least 5 characters long.
+        </div>
+        <div *ngIf="signupForm.controls['name'].errors?.['pattern']">
+          Name must be alphabets.
         </div>
       </div>
   
@@ -18,7 +21,7 @@
         <label>Email: <span class="required">*</span></label>
         <input class="form-control" formControlName="email" type="email">
       </div>
-      <div *ngIf="signupForm.controls['email'].invalid && (signupForm.controls['email'].dirty || signupForm.controls['email'].touched)" class="alert alert-danger">
+      <div *ngIf="signupForm.controls['email'].invalid && (signupForm.controls['email'].dirty || signupForm.controls['email'].touched)" class="text-danger">
         <div *ngIf="signupForm.controls['email'].errors?.['required']">
           Email is required.
         </div>
@@ -31,7 +34,7 @@
         <label>Date of Birth: <span class="required">*</span></label>
         <input class="form-control" formControlName="dob" type="date">
       </div>
-      <div *ngIf="signupForm.controls['dob'].invalid && (signupForm.controls['dob'].dirty || signupForm.controls['dob'].touched)" class="alert alert-danger">
+      <div *ngIf="signupForm.controls['dob'].invalid && (signupForm.controls['dob'].dirty || signupForm.controls['dob'].touched)" class="text-danger">
         <div *ngIf="signupForm.controls['dob'].errors?.['required']">
           Date of Birth is required.
         </div>
@@ -41,7 +44,7 @@
         <label>Phone Number: <span class="required">*</span></label>
         <input class="form-control" formControlName="phone" type="tel">
       </div>
-      <div *ngIf="signupForm.controls['phone'].invalid && (signupForm.controls['phone'].dirty || signupForm.controls['phone'].touched)" class="alert alert-danger">
+      <div *ngIf="signupForm.controls['phone'].invalid && (signupForm.controls['phone'].dirty || signupForm.controls['phone'].touched)" class="text-danger">
         <div *ngIf="signupForm.controls['phone'].errors?.['required']">
           Phone Number is required.
         </div>
@@ -58,7 +61,7 @@
           <option value="guest">Trainer</option>
         </select>
       </div>
-      <div *ngIf="signupForm.controls['role'].invalid && (signupForm.controls['role'].dirty || signupForm.controls['role'].touched)" class="alert alert-danger">
+      <div *ngIf="signupForm.controls['role'].invalid && (signupForm.controls['role'].dirty || signupForm.controls['role'].touched)" class="text-danger">
         <div *ngIf="signupForm.controls['role'].errors?.['required']">
           Role selection is required.
         </div>
@@ -73,7 +76,7 @@
         <label>Password: <span class="required">*</span></label>
         <input class="form-control" formControlName="password" type="password">
       </div>
-      <div *ngIf="signupForm.controls['password'].invalid && (signupForm.controls['password'].dirty || signupForm.controls['password'].touched)" class="alert alert-danger">
+      <div *ngIf="signupForm.controls['password'].invalid && (signupForm.controls['password'].dirty || signupForm.controls['password'].touched)" class="text-danger">
         <div *ngIf="signupForm.controls['password'].errors?.['required']">
           Password is required.
         </div>
@@ -86,7 +89,7 @@
         <label>Confirm Password: <span class="required">*</span></label>
         <input class="form-control" formControlName="confirmPassword" type="password">
       </div>
-      <div *ngIf="signupForm.controls['confirmPassword'].invalid && (signupForm.controls['confirmPassword'].dirty || signupForm.controls['confirmPassword'].touched)" class="alert alert-danger">
+      <div *ngIf="signupForm.controls['confirmPassword'].invalid && (signupForm.controls['confirmPassword'].dirty || signupForm.controls['confirmPassword'].touched)" class="text-danger">
         <div *ngIf="signupForm.controls['confirmPassword'].errors?.['required']">
           Confirm Password is required.
         </div>
@@ -99,7 +102,7 @@
         <input type="checkbox" formControlName="terms" id="terms">
         <label for="terms">I agree to the <a href="#" class="terms">Terms and Conditions</a></label>
       </div>
-      <div *ngIf="signupForm.controls['terms'].invalid && (signupForm.controls['terms'].dirty || signupForm.controls['terms'].touched)" class="alert alert-danger">
+      <div *ngIf="signupForm.controls['terms'].invalid && (signupForm.controls['terms'].dirty || signupForm.controls['terms'].touched)" class="text-danger">
         <div *ngIf="signupForm.controls['terms'].errors?.['required']">
           You must agree to the terms and conditions.
         </div>

@@ -1,0 +1,23 @@
+<div class="course-page">
+    <h2 class="text-center">Search Courses</h2>
+    <form #searchForm="ngForm" (ngSubmit)="onSearch(searchForm.value)" class="search-form">
+      <div class="input-group mb-3">
+        <input
+          type="text"
+          id="search"
+          name="search"
+          placeholder="Enter course name"
+          [(ngModel)]="searchQuery"
+          #search="ngModel"
+          class="form-control"
+          required
+        />
+        <button type="submit" [disabled]="searchForm.invalid" class="btn btn-gradient">
+          Search
+        </button>
+      </div>
+      <small [hidden]="search.valid || (search.pristine && !searchForm.submitted)" class="text-danger">
+        Course name is required.
+      </small>
+    </form>
+  </div>

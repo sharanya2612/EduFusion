@@ -1,0 +1,41 @@
+.course-page {
+    max-width: 600px;
+    margin: 120px auto 0;
+    padding: 30px;
+    margin-top: 90px; /* Space at the top */
+    margin-bottom: 60px; /* Space at the bottom */
+  }
+  
+  h2 {
+    color: #FB0079;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .search-form {
+    margin-top: 30px;
+  }
+  
+  .input-group {
+    display: flex;
+  }
+  
+  .form-control {
+    border-top-left-radius: 20px; /* Rounded corners */
+    border-bottom-left-radius: 20px; /* Rounded corners */
+  }
+  
+  .btn-gradient {
+    border-top-right-radius: 20px; /* Rounded corners */
+    border-bottom-right-radius: 20px; /* Rounded corners */
+    background: linear-gradient(to right, #FB0079, #FF9C30); /* Gradient background */
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .text-danger {
+    color: red; /* Validation messages in red */
+    display: block;
+    margin-top: 10px;
+  }

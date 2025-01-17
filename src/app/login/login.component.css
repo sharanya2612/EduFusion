@@ -6,9 +6,11 @@
   margin-bottom: 15px;
 }
 
-.alert {
-  margin-top: 5px;
-}
+/* .login-icon {
+  font-size: 2rem; 
+  color: #FB0079;
+  margin-bottom: 20px; 
+} */
 
 .container {
   max-width: 500px;
@@ -56,4 +58,9 @@ h1 {
 
 .signup-link:hover {
   text-decoration: underline; /* Underline on hover */
+}
+
+.text-danger {
+  color: red; /* Validation messages in red */
+  margin-bottom: 10px; /* Add space below the validation messages */
 }

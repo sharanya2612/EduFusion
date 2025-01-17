@@ -6,7 +6,6 @@
   z-index: 1000; /* Ensure it stays above other content */
 }
 
-
 .navbar-nav .nav-link {
   color: black;
   font-family: 'Lora', serif;
@@ -19,7 +18,7 @@
   color: white;
 }
 
-.dropdown-menu{
+.dropdown-menu {
   background-color: #FCF7F2;
 }
 
@@ -34,4 +33,19 @@
 
 .logo {
   height: 80px;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .navbar-nav {
+    text-align: center;
+  }
+
+  .navbar-nav .nav-item {
+    margin-bottom: 10px;
+  }
+
+  .navbar-nav .nav-link {
+    margin: 0;
+  }
 }

@@ -1,69 +1,107 @@
 .contact-section {
-    display: flex;
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch; /* Ensure both map and form stretch to the same height */
+  padding: 20px;
+  flex-wrap: wrap; /* Allow wrapping on smaller screens */
+}
+
+h1 {
+  font-weight: bold;
+}
+
+.map-container {
+  flex: 1; /* Allow the map to grow and shrink */
+  margin-bottom: 20px;
+}
+
+.map-container iframe {
+  width: 90%;
+  height: 100%;
+  border: 0;
+  border-radius: 20px;
+}
+
+.contact-form {
+  flex: 1; /* Allow the form to grow and shrink */
+  max-width: 600px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Center the form content vertically */
+}
+
+.contact-form h2 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.contact-form p {
+  margin-bottom: 20px;
+}
+
+.contact-form form div {
+  margin-bottom: 15px;
+}
+
+.contact-form form input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px; /* Rounded corners */
+}
+
+.contact-form form textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 15px; /* Rounded corners */
+}
+
+.contact-form form button {
+  padding: 10px 20px;
+  background: linear-gradient(to right, #FB0079, #FF9C30); /* Gradient background */
+  color: white;
+  border: none;
+  border-radius: 25px; /* Rounded corners */
+  cursor: pointer;
+}
+
+p span {
+  margin-right: 30px; /* Adds space between the spans */
+  display: block;
+  margin-bottom: 10px;
+}
+
+p i.fa {
+  color: #FB0079; /* Makes the icons pink */
+  margin-right: 5px;
+}
+
+.text-danger {
+  color: red; /* Validation messages in red */
+}
+
+.star {
+  color: red;
+}
+
+/* Responsive styles */
+@media (min-width: 768px) {
+  .contact-section {
+    flex-direction: row;
     justify-content: space-between;
   }
 
-  h1{
-    font-weight: bold;
-  }
   .map-container {
     width: 50%;
-    height: 400px;
+    margin-bottom: 0;
   }
-  
+
   .contact-form {
     width: 45%;
-    padding: 20px;
   }
-  
-  .contact-form h2 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .contact-form p {
-    margin-bottom: 20px;
-  }
-  
-  .contact-form form div {
-    margin-bottom: 15px;
-  }
-  
-  .contact-form form input{
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 20px; /* Rounded corners */
-  }
-
-  .contact-form form textarea {
-    width: 100%;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 15px; /* Rounded corners */
-  }
-  
-  .contact-form form button {
-    padding: 10px 20px;
-    background: linear-gradient(to right, #FB0079, #FF9C30); /* Gradient background */
-    color: white;
-    border: none;
-    border-radius: 25px; /* Rounded corners */
-    cursor: pointer;
-  }
-  
-  p span {
-    margin-right: 30px; /* Adds space between the spans */
-  }
-  
-  p i.fa {
-    color: #FB0079; /* Makes the icons pink */
-  }
-  
-  .text-danger {
-    color: red; /* Validation messages in red */
-  }
-
-  .star{
-    color: red;
-  }
+}

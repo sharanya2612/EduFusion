@@ -6,8 +6,9 @@
   margin-bottom: 15px;
 }
 
-.alert {
-  margin-top: 5px;
+.text-danger {
+  color: red; /* Validation messages in red */
+  margin-bottom: 10px; /* Add space below the validation messages */
 }
 
 .container {
