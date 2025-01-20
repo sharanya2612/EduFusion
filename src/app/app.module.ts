@@ -17,6 +17,9 @@ import { LoginComponent } from './login/login.component';
 import { SignupComponent } from './signup/signup.component';
 import { ContactComponent } from './contact/contact.component';
 import { CoursesComponent } from './courses/courses.component';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { MaterialModule } from './shared/material/material.module';
+import { PopularCoursesComponent } from './popular-courses/popular-courses.component'; 
 
 @NgModule({
   declarations: [
@@ -33,15 +36,19 @@ import { CoursesComponent } from './courses/courses.component';
     LoginComponent,
     SignupComponent,
     ContactComponent,
-    CoursesComponent
+    CoursesComponent,
+    PopularCoursesComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MaterialModule
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -16,14 +16,23 @@
         <a class="nav-link" routerLink="/home" fragment="trainers">Trainers</a>
       </li>
       <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCourses" role="button" data-bs-toggle="dropdown"
           aria-expanded="false">
           Courses
         </a>
-        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <li><a class="dropdown-item" routerLink="/popular-courses">Popular Courses</a></li>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownCourses">
           <li><a class="dropdown-item" routerLink="/all-courses">All Courses</a></li>
-          <li><a class="dropdown-item" routerLink="/blog">Blog</a></li>
+          <li><a class="dropdown-item" routerLink="/popular-courses">Popular Courses</a></li>
+        </ul>
+      </li>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownBlog" role="button" data-bs-toggle="dropdown"
+          aria-expanded="false">
+          Blog
+        </a>
+        <ul class="dropdown-menu" aria-labelledby="navbarDropdownBlog">
+          <li><a class="dropdown-item" routerLink="/blog/courses">Courses</a></li>
+          <li><a class="dropdown-item" routerLink="/blog/services">Services</a></li>
         </ul>
       </li>
       <li class="nav-item">
@@ -35,3 +44,38 @@
     </ul>
   </div>
 </div>
+
+<!-- <mat-toolbar class="navbar">
+  <img src="assets/images/Logo.jpg" alt="Edufusion Logo" class="logo">
+  <span class="spacer"></span>
+  <nav>
+    <a mat-button routerLink="/home">Home</a>
+    <a mat-button routerLink="/home" fragment="services">Services</a>
+    <a mat-button routerLink="/home" fragment="trainers">Trainers</a>
+    <a mat-button [matMenuTriggerFor]="coursesMenu">Courses</a>
+    <a mat-button [matMenuTriggerFor]="blogMenu">Blog</a>
+    <a mat-button routerLink="/home" fragment="testimonials">Testimonials</a>
+    <a mat-button routerLink="/home" fragment="contact">Contact</a>
+  </nav>
+</mat-toolbar>
+
+<mat-menu #coursesMenu="matMenu">
+  <a mat-menu-item routerLink="/all-courses">All Courses</a>
+  <a mat-menu-item [matMenuTriggerFor]="popularCoursesMenu" >Popular Courses</a>
+</mat-menu>
+
+<mat-menu #popularCoursesMenu="matMenu">
+  <a mat-menu-item [routerLink]="['/all-courses']" fragment="1">Angular</a>
+  <a mat-menu-item [routerLink]="['/all-courses']" fragment="2">React</a>
+</mat-menu>
+
+<mat-menu #blogMenu="matMenu">
+  <a mat-menu-item [matMenuTriggerFor]="services">Services</a>
+  <a mat-menu-item routerLink="/blog/courses">Courses</a>
+</mat-menu>
+
+<mat-menu #services="matMenu">
+  <a mat-menu-item routerLink="/blog/course-management">Course Management</a>
+  <a mat-menu-item routerLink="/blog/interview-preparation">Interview Preparation</a>
+  <a mat-menu-item routerLink="/blog/project-management">Project Management</a>
+</mat-menu> -->

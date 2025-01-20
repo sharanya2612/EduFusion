@@ -1,25 +1,28 @@
 .navbar {
-  background-color: #FCF7F2;
-  position: fixed; /* Fixed position */
-  width: 100%; /* Full width */
-  top: 0; /* Stick to the top */
-  z-index: 1000; /* Ensure it stays above other content */
+  background-color: #f8e7d6;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+  padding: 0.5rem 1rem; /* Reduced padding to decrease height */
 }
 
 .navbar-nav .nav-link {
   color: black;
   font-family: 'Lora', serif;
-  margin: 6px;
+  font-size: medium;
+  margin: 4px;
   font-weight: 500;
 }
 
 .navbar-nav .nav-link:hover {
   background-color: #575757;
   color: white;
+  border-radius: 25px;
 }
 
 .dropdown-menu {
-  background-color: #FCF7F2;
+  background-color: #f8e7d6;
 }
 
 .dropdown-menu .dropdown-item {
@@ -29,23 +32,89 @@
 .dropdown-menu .dropdown-item:hover {
   background-color: #575757;
   color: white;
+  border-radius: 25px;
 }
 
 .logo {
-  height: 80px;
+  height: 60px;
 }
-
-/* Responsive styles */
-@media (max-width: 768px) {
-  .navbar-nav {
-    text-align: center;
-  }
-
-  .navbar-nav .nav-item {
-    margin-bottom: 10px;
-  }
-
+/* Responsive adjustments */
+@media (max-width: 992px) {
   .navbar-nav .nav-link {
-    margin: 0;
+    font-size: small; /* Adjust font size for smaller screens */
+  }
+
+  .dropdown-menu {
+    position: static; /* Ensure dropdowns are within the viewport */
+    float: none;
+  }
+
+  .dropdown-submenu .dropdown-menu {
+    left: 0;
+    margin-left: 1rem;
+    margin-right: 1rem;
   }
 }
+
+/* .navbar {
+  background-color: #f8e7d6;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 1000;
+}
+
+.logo {
+  height: 60px;
+}
+
+.spacer {
+  flex: 1 1 auto;
+}
+
+nav a {
+  color: black;
+  font-family: 'Lora', serif;
+  margin: 6px;
+  font-size: medium;
+  font-weight: 500;
+}
+
+nav a:hover {
+  background-color: #575757;
+  color: white;
+  border-radius: 25px;
+}
+
+::ng-deep .mat-menu-content {
+  background-color: #f8e7d6 ;
+}
+
+::ng-deep .mat-menu-item {
+  color: black;
+  font-family: 'Lora', serif;
+}
+
+::ng-deep .mat-menu-item:hover {
+  background-color: #575757;
+  color: white;
+  border-radius: 25px;
+} */
+
+/* .sidenav-container {
+  height: 100%;
+}
+
+.sidenav {
+  width: 250px;
+} */
+
+/* @media (max-width: 768px) {
+  nav {
+    display: none;
+  } */
+
+  /* .sidenav {
+    display: block;
+  } */
+/* } */

@@ -15,21 +15,17 @@
       <span><i class="fa fa-phone"></i> +1-202-555-0127</span>
       <span><i class="fa fa-map-marker-alt"></i> 123 Main St, Mangaluru, Karnataka</span>
     </p>
-    <form #f="ngForm" novalidate (ngSubmit)="save(f.value, f.form.valid)">
+    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
       <div>
         <label for="name">Name<span class="star"> *</span></label>
         <input
           type="text"
           id="name"
-          name="name"
+          formControlName="name"
           placeholder="Your name here"
-          required
-          minlength="5"
-          [(ngModel)]="user.name"
-          #name="ngModel"
           class="form-control"
         />
-        <small [hidden]="name.valid || (name.pristine && !f.submitted)" class="text-danger">
+        <small *ngIf="contactForm.controls['name'].invalid && (contactForm.controls['name'].dirty || contactForm.controls['name'].touched)" class="text-danger">
           Name is required (minimum 5 characters).
         </small>
       </div>
@@ -38,14 +34,11 @@
         <input
           type="email"
           id="email"
-          name="email"
+          formControlName="email"
           placeholder="Your email here"
-          required
-          [(ngModel)]="user.email"
-          #email="ngModel"
           class="form-control"
         />
-        <small [hidden]="email.valid || (email.pristine && !f.submitted)" class="text-danger">
+        <small *ngIf="contactForm.controls['email'].invalid && (contactForm.controls['email'].dirty || contactForm.controls['email'].touched)" class="text-danger">
           Please provide a valid email address.
         </small>
       </div>
@@ -53,13 +46,12 @@
         <label for="message">Message</label>
         <textarea
           id="message"
-          name="message"
+          formControlName="message"
           placeholder="Your message here"
-          [(ngModel)]="user.message"
           class="form-control"
         ></textarea>
       </div>
-      <button type="submit" class="btn btn-gradient">Send Message</button>
+      <button type="submit" class="btn btn-gradient" [disabled]="contactForm.invalid">Send Message</button>
     </form>
   </div>
 </div>
