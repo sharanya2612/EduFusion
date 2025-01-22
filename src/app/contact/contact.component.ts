@@ -25,7 +25,7 @@ export class ContactComponent {
   }
 
 
-  save(formValue: any, isValid: boolean) {
+ onSubmit(formValue: any, isValid: boolean) {
     if (isValid) {
       console.log('Form Submitted!', formValue);
     }

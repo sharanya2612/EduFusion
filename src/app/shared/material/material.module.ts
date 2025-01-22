@@ -11,6 +11,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule} from '@angular/material/tree';
+import { MatDialog } from '@angular/material/dialog';
 
 
 
@@ -28,7 +29,8 @@ import { MatTreeModule} from '@angular/material/tree';
     MatBadgeModule,
     MatChipsModule,
     MatTooltipModule,
-    MatTreeModule
+    MatTreeModule,
+    MatDialog
   ],
   exports: [
     CommonModule,
@@ -42,7 +44,8 @@ import { MatTreeModule} from '@angular/material/tree';
     MatBadgeModule,
     MatChipsModule,
     MatTooltipModule,
-    MatTreeModule
+    MatTreeModule,
+    MatDialog
   ]
 })
 export class MaterialModule { }

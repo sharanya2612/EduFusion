@@ -32,7 +32,7 @@
         </mat-chip-set>
       </mat-card-content>
       <mat-card-actions>
-        <button mat-button matTooltip="Enroll in this course">Enroll</button>
+        <button mat-button matTooltip="Enroll in this course" (click)="onEnroll(course)">Enroll</button>
         <span matBadge="{{ course.rating }}" matBadgeColor="accent" class="badge-position">Rating</span>
       </mat-card-actions>
     </mat-card>

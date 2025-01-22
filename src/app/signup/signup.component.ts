@@ -25,7 +25,7 @@ export class SignupComponent {
       phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
       role: ['', Validators.required],
       address: [''],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', Validators.required],
       terms: [false, Validators.requiredTrue]
     }, { validator: this.mustMatch('password', 'confirmPassword') });

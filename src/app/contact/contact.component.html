@@ -15,7 +15,8 @@
       <span><i class="fa fa-phone"></i> +1-202-555-0127</span>
       <span><i class="fa fa-map-marker-alt"></i> 123 Main St, Mangaluru, Karnataka</span>
     </p>
-    <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="contactForm" >
+      <!-- (ngSubmit)="onSubmit()"> -->
       <div>
         <label for="name">Name<span class="star"> *</span></label>
         <input

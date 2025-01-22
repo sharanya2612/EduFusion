@@ -50,7 +50,13 @@ h2 {
   cursor: pointer;
 }
 
-.signup-link {
+.signup-link{
+  color: #FB0079; /* Stylish link color */
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.forgot-password-link{
   color: #FB0079; /* Stylish link color */
   text-decoration: none;
   font-weight: bold;

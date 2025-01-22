@@ -19,7 +19,11 @@ import { ContactComponent } from './contact/contact.component';
 import { CoursesComponent } from './courses/courses.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MaterialModule } from './shared/material/material.module';
-import { PopularCoursesComponent } from './popular-courses/popular-courses.component'; 
+import { PopularCoursesComponent } from './popular-courses/popular-courses.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { NewPasswordComponent } from './new-password/new-password.component';
+import {HttpClientModule } from'@angular/common/http';
+import { EnrollDialogComponent } from './enroll-dialog/enroll-dialog.component'; 
 
 @NgModule({
   declarations: [
@@ -37,14 +41,18 @@ import { PopularCoursesComponent } from './popular-courses/popular-courses.compo
     SignupComponent,
     ContactComponent,
     CoursesComponent,
-    PopularCoursesComponent
+    PopularCoursesComponent,
+    ForgotPasswordComponent,
+    NewPasswordComponent,
+    EnrollDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
   ],
   providers: [
     provideAnimationsAsync()
