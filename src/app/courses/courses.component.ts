@@ -34,7 +34,7 @@ export class CoursesComponent implements OnInit {
   }
   onEnroll(course: any): void {
     const dialogRef = this.dialog.open(EnrollDialogComponent, {
-      width: '400px',
+      width: '500px',
       data: course
     });
 
