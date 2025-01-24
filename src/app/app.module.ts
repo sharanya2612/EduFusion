@@ -23,7 +23,10 @@ import { PopularCoursesComponent } from './popular-courses/popular-courses.compo
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { NewPasswordComponent } from './new-password/new-password.component';
 import {HttpClientModule } from'@angular/common/http';
-import { EnrollDialogComponent } from './enroll-dialog/enroll-dialog.component'; 
+import { EnrollDialogComponent } from './enroll-dialog/enroll-dialog.component';
+import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
+import { TrainerDashboardComponent } from './trainer-dashboard/trainer-dashboard.component';
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component'; 
 
 @NgModule({
   declarations: [
@@ -44,7 +47,10 @@ import { EnrollDialogComponent } from './enroll-dialog/enroll-dialog.component';
     PopularCoursesComponent,
     ForgotPasswordComponent,
     NewPasswordComponent,
-    EnrollDialogComponent
+    EnrollDialogComponent,
+    UserDashboardComponent,
+    TrainerDashboardComponent,
+    AdminDashboardComponent
   ],
   imports: [
     BrowserModule,

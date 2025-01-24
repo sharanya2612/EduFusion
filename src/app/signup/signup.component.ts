@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from '../user.service';
 
 
 @Component({
@@ -13,13 +14,13 @@ import { Router } from '@angular/router';
 export class SignupComponent {
   signupForm!: FormGroup;
 
-  constructor(private fb: FormBuilder, private router: Router) {
+  constructor(private fb: FormBuilder, private router: Router, private userService: UserService) {
     this.createForm();
   }
 
   createForm() {
     this.signupForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(5), Validators.pattern('^[a-z|A-Z]$')]],
+      name: ['', [Validators.required, Validators.minLength(5), Validators.pattern('^[a-z|A-Z]+$')]],
       email: ['', [Validators.required, Validators.email]],
       dob: ['', Validators.required],
       phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
@@ -50,9 +51,21 @@ export class SignupComponent {
 
   onSubmit() {
     if (this.signupForm.valid) {
-      alert('Successfully Signed Up');
-      console.log('Form Submitted!', this.signupForm.value);
-      this.router.navigate(['/login']);
+      const email = this.signupForm.value.email;
+      this.userService.checkEmailExists(email).subscribe(emailExists => {
+        if (emailExists) {
+          alert('Email already exists. Please use a different email.');
+        } else {
+          this.userService.addUser(this.signupForm.value).subscribe(response => {
+            alert('Successfully signed up!');
+            this.router.navigate(['/login']);
+          }, error => {
+            console.error('Error adding user', error);
+          });
+        }
+      }, error => {
+        console.error('Error checking email', error);
+      });
     }
   }
 }

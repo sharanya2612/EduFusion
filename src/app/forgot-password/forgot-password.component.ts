@@ -1,6 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { UserService } from '../user.service';
 
 @Component({
   selector: 'app-forgot-password',
@@ -11,8 +12,9 @@ import { Router } from '@angular/router';
 })
 export class ForgotPasswordComponent implements OnInit {
   forgotPasswordForm!: FormGroup;
+  email!: string;
 
-  constructor(private fb: FormBuilder, private router: Router) {}
+  constructor(private fb: FormBuilder, private router: Router, private userService: UserService) {}
 
   ngOnInit(): void {
     this.forgotPasswordForm = this.fb.group({
@@ -20,16 +22,21 @@ export class ForgotPasswordComponent implements OnInit {
     });
   }
 
-  onSubmit(): void {
-    if (this.forgotPasswordForm.valid) {
-      const email = this.forgotPasswordForm.value.email;
-      // Perform the password reset logic here, such as sending a reset link to the email
-      console.log('Password reset link sent to:', email);
-      alert('A password reset link has been sent to your email.');
-      this.forgotPasswordForm.reset();
-      this.router.navigate(['/new-password']);
-    } else {
-      alert('Please enter a valid email address.');
+
+    onSubmit() {
+      if (this.forgotPasswordForm.valid) {
+        this.email = this.forgotPasswordForm.value.email;
+        this.userService.checkEmail(this.email).subscribe(user => {
+          if (user) {
+            // alert('Email found! You can now set a new password.');
+            localStorage.setItem('resetEmail', this.email);
+            this.router.navigate(['/new-password']);
+          } else {
+            alert('Email not found.');
+          }
+        }, error => {
+          console.error('Error checking email', error);
+        });
+      }
     }
-  }
 }

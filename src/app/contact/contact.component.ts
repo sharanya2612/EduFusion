@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ContactService } from '../contact.service';
 
 @Component({
   selector: 'app-contact',
@@ -12,7 +13,7 @@ export class ContactComponent {
   companyemail="support@hello.com";
   contactForm!: FormGroup;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder, private contactService: ContactService) {
     this.createForm();
   }
 
@@ -25,9 +26,14 @@ export class ContactComponent {
   }
 
 
- onSubmit(formValue: any, isValid: boolean) {
-    if (isValid) {
-      console.log('Form Submitted!', formValue);
+  onSubmit() {
+    if (this.contactForm.valid) {
+      this.contactService.addContact(this.contactForm.value).subscribe(response => {
+        alert('Message sent successfully!');
+        this.contactForm.reset();
+      }, error => {
+        console.error('Error sending message', error);
+      });
     }
   }
 

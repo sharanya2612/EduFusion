@@ -16,4 +16,7 @@ export class CourseService {
   addCourse(course: any): Observable<any> {
     return this.http.post<any>(this.apiUrl, course);
   }
+  searchCourses(query: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}?q=${query}`);
+  }
 }

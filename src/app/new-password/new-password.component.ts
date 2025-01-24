@@ -1,5 +1,7 @@
 import { Component,OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
+import { UserService } from '../user.service';
 
 
 @Component({
@@ -11,10 +13,16 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class NewPasswordComponent implements OnInit  {
   newPasswordForm!: FormGroup;
+  email!: string;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder , private userService: UserService, private router: Router) {}
 
   ngOnInit(): void {
+    this.email = localStorage.getItem('resetEmail') || '';
+    if (!this.email) {
+      // alert('No email found. Redirecting to home page.');
+      this.router.navigate(['/home']);
+    }
     this.newPasswordForm = this.fb.group({
       newPassword: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', Validators.required]
@@ -29,14 +37,16 @@ export class NewPasswordComponent implements OnInit  {
 
   onSubmit(): void {
     if (this.newPasswordForm.valid) {
-      const newPassword = this.newPasswordForm.value.newPassword;
-      // Perform the password update logic here, such as sending the new password to your server
-      console.log('New password set:', newPassword);
-      alert('Your password has been successfully updated.');
-      this.newPasswordForm.reset();
-    } else {
-      alert('Please fill out the form correctly.');
+      if (this.newPasswordForm.valid) {
+        const newPassword = this.newPasswordForm.value.newPassword;
+        this.userService.updatePassword(this.email, newPassword).subscribe(() => {
+          alert('Password updated successfully!');
+          localStorage.removeItem('resetEmail');
+          this.router.navigate(['/login']);
+        }, error => {
+          console.error('Error updating password', error);
+        });
+      }
     }
-  }
-
+}
 }
