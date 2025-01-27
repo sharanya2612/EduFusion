@@ -26,7 +26,11 @@ import {HttpClientModule } from'@angular/common/http';
 import { EnrollDialogComponent } from './enroll-dialog/enroll-dialog.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { TrainerDashboardComponent } from './trainer-dashboard/trainer-dashboard.component';
-import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component'; 
+import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { ProfileComponent } from './profile/profile.component';
+import { FaqComponent } from './faq/faq.component';
+
+
 
 @NgModule({
   declarations: [
@@ -50,7 +54,9 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
     EnrollDialogComponent,
     UserDashboardComponent,
     TrainerDashboardComponent,
-    AdminDashboardComponent
+    AdminDashboardComponent,
+    ProfileComponent,
+    FaqComponent
   ],
   imports: [
     BrowserModule,

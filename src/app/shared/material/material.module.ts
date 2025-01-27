@@ -12,6 +12,7 @@ import { MatChipsModule } from '@angular/material/chips';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatTreeModule} from '@angular/material/tree';
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatChipsModule,
     MatTooltipModule,
     MatTreeModule,
-    MatDialogModule
+    MatDialogModule,
+    MatExpansionModule
   ],
   exports: [
     CommonModule,
@@ -44,7 +46,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     MatChipsModule,
     MatTooltipModule,
     MatTreeModule,
-    MatDialogModule
+    MatDialogModule,
+    MatExpansionModule
   ]
 })
 export class MaterialModule { }

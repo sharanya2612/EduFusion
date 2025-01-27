@@ -1,0 +1,196 @@
+/* General Styles */
+.container {
+    margin-top: 5rem;
+    font-family: 'Lora', serif;
+  }
+  
+  .card {
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    overflow: hidden;
+    margin-bottom: 2rem; /* Add margin at the bottom of the card */
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: scale(1.05);
+  }
+  
+  .card-header {
+    background-color: #f8e7d6;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #FB0079;
+    text-align: center;
+  }
+  
+  .card-body {
+    padding: 2rem;
+  }
+  
+  .list-group-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-bottom: 1px solid #f8e7d6;
+    transition: background-color 0.3s ease-in-out;
+  }
+  
+  .list-group-item:hover {
+    background-color: #f8e7d6;
+  }
+  
+  .list-group-item:last-child {
+    border-bottom: none;
+  }
+  
+  .list-group-item button {
+    background: none;
+    border: none;
+    color: #FB0079;
+    cursor: pointer;
+    transition: color 0.3s ease-in-out;
+  }
+  
+  .list-group-item button:hover {
+    color: #FF9C30;
+  }
+  
+  /* Profile Information */
+  .profile-info {
+    text-align: center;
+  }
+  
+  .profile-info .profile-icon {
+    font-size: 6rem;
+    color: #FB0079;
+    margin-bottom: 1rem;
+  }
+  
+  .profile-info p {
+    margin: 0.5rem 0;
+    font-size: 1.2rem;
+  }
+  
+  .profile-info .icon {
+    margin-right: 0.5rem;
+    color: #FB0079;
+  }
+  
+  /* Enrolled Courses */
+  .enrolled-courses ul {
+    padding: 0;
+    list-style: none;
+  }
+  
+  .enrolled-courses li {
+    background-color: #fff;
+    margin-bottom: 0.5rem;
+    border-radius: 5px;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    transition: transform 0.3s ease-in-out;
+  }
+  
+  .enrolled-courses li:hover {
+    transform: translateX(10px);
+  }
+  
+  .enrolled-courses li::before {
+    content: '•';
+    color: #FB0079;
+    font-size: 1.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .profile-info button{
+    background: linear-gradient(45deg, #FB0079, #FF9C30);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s ease-in-out;
+    margin-left: 5px;
+  }
+  
+  /* Buttons */
+  .button-container .btn-gradient {
+    background: linear-gradient(45deg, #FB0079, #FF9C30);
+    color: white;
+    border: none;
+    border-radius: 30px;
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s ease-in-out;
+    margin-left: 5px;
+  }
+  /*
+  .btn-gradient:hover {
+    opacity: 0.8;
+  }*/
+  
+  .button-container .btn-custom {
+    background-color: white;
+    color: black;
+    border: none;
+    border-radius: 30px;
+    padding: 1rem 2.5rem;
+    font-size: 1.2rem;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: opacity 0.3s ease-in-out;
+  }
+  /*
+  
+  .btn-custom:hover {
+    opacity: 0.7;
+  } */
+  
+  /* Gradient Text */
+  .gradient-text {
+    background: linear-gradient(45deg, #FB0079, #feb47b);
+    font-weight: bold;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 2px 2px 4px rgba(224, 89, 89, 0.5);
+  }
+  
+  /* Tagline */
+  .tagline {
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Edit Profile Dialog */
+  .edit-profile-dialog {
+    max-width: 500px;
+    margin: auto;
+  }
+  
+  .edit-profile-dialog .form-group {
+    margin-bottom: 1.5rem;
+  }
+  
+  .edit-profile-dialog .form-group label {
+    font-weight: bold;
+    color: #FB0079;
+  }
+  
+  .edit-profile-dialog .form-group input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .edit-profile-dialog .button-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 1.5rem;
+  }
+  

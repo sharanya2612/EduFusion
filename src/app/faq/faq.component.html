@@ -1,0 +1,19 @@
+<header class="text-center">
+    <div class="banner">
+      <h1 class="gradient-text">FAQs</h1>
+      <p class="lead tagline">Find answers to your questions below</p>
+    </div>
+  </header>
+  
+  <div class="container my-5">
+    <mat-accordion>
+      <mat-expansion-panel *ngFor="let faq of faqs">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            {{ faq.question }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <p>{{ faq.answer }}</p>
+      </mat-expansion-panel>
+    </mat-accordion>
+  </div>

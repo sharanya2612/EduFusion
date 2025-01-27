@@ -167,7 +167,7 @@
       "name": "Sharanya",
       "email": "sha@gmail.com",
       "dob": "2002-12-26",
-      "phone": "7362836282",
+      "phone": "7362836283",
       "role": "user",
       "address": "Mangalore",
       "password": "12345678",
@@ -199,6 +199,18 @@
       "name": "Sharanya",
       "email": "abc@gmail.com",
       "message": "Hello"
+    }
+  ],
+  "courses-enrolled": [
+    {
+      "id": "daab",
+      "userId": "f61f",
+      "courseId": "1"
+    },
+    {
+      "id": "72cc",
+      "userId": "f61f",
+      "courseId": "3"
     }
   ]
 }

@@ -1,1 +1,91 @@
-<p>user-dashboard works!</p>
+<div class="container">
+  <h2 class="gradient-text">Welcome, {{ user.name }}</h2><br>
+  <div class="row">
+    <div class="col-md-4">
+      <div class="card" @fadeIn>
+        <div class="card-header">
+          Profile Information
+        </div>
+        <div class="card-body profile-info">
+          <i class="fas fa-user-circle profile-icon"></i>
+          <p><i class="fas fa-user icon"></i><strong>Name:</strong> {{ user.name }}</p>
+          <p><i class="fas fa-envelope icon"></i><strong>Email:</strong> {{ user.email }}</p>
+          <p><i class="fas fa-birthday-cake icon"></i><strong>Date of Birth:</strong> {{ user.dob }}</p>
+          <p><i class="fas fa-phone icon"></i><strong>Phone:</strong> {{ user.phone }}</p>
+          <p><i class="fas fa-user-tag icon"></i><strong>Role:</strong> {{ user.role }}</p><br>
+          <button mat-button class="btn-gradient" (click)="editProfile()">Edit Profile</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <div class="card" @fadeIn>
+        <div class="card-header">
+          Enrolled Courses
+        </div>
+        <div class="card-body enrolled-courses">
+          <div *ngIf="enrolledCourses.length > 0; else noCourses">
+            <ul class="list-group">
+              <li class="list-group-item" *ngFor="let course of enrolledCourses" @slideIn>
+                {{ course.name }}
+                <button mat-icon-button (click)="confirmDelete(course.id)">
+                  <mat-icon>delete</mat-icon>
+                </button>
+              </li>
+            </ul>
+          </div>
+          <ng-template #noCourses>
+            <p>You have not enrolled in any courses yet.</p>
+          </ng-template>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit Profile Dialog -->
+<ng-template #editProfileDialog>
+  <h1 mat-dialog-title>Edit Profile</h1>
+  <div mat-dialog-content class="edit-profile-dialog">
+    <form [formGroup]="editProfileForm" (ngSubmit)="updateProfile()">
+      <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" id="name" formControlName="name" class="form-control">
+        <div *ngIf="editProfileForm.get('name')?.invalid && (editProfileForm.get('name')?.dirty || editProfileForm.get('name')?.touched)" class="text-danger">
+          <div *ngIf="editProfileForm.get('name')?.errors?.['required']">Name is required.</div>
+          <div *ngIf="editProfileForm.get('name')?.errors?.['minlength']">Name should be atleast 5 characters.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="dob">Date of Birth</label>
+        <input type="date" id="dob" formControlName="dob" class="form-control">
+        <div *ngIf="editProfileForm.get('dob')?.invalid && (editProfileForm.get('dob')?.dirty || editProfileForm.get('dob')?.touched)" class="text-danger">
+          <div *ngIf="editProfileForm.get('dob')?.errors?.['required']">Date of Birth is required.</div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="phone">Phone</label>
+        <input type="text" id="phone" formControlName="phone" class="form-control">
+        <div *ngIf="editProfileForm.get('phone')?.invalid && (editProfileForm.get('phone')?.dirty || editProfileForm.get('phone')?.touched)" class="text-danger">
+          <div *ngIf="editProfileForm.get('phone')?.errors?.['required']">Phone is required.</div>
+          <div *ngIf="editProfileForm.get('phone')?.errors?.['pattern']">Phone number should be 10 digits.</div>
+        </div>
+      </div>
+      <div class="button-container">
+        <button type="button" mat-button class="btn-custom" (click)="closeEditProfileDialog()">Cancel</button>
+        <button type="submit" mat-button class="btn-gradient" [disabled]="editProfileForm.invalid">Save</button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+<!-- Confirmation Dialog -->
+<ng-template #confirmDialog>
+  <h1 mat-dialog-title>Confirm Deletion</h1>
+  <div mat-dialog-content>
+    <p>Are you sure you want to delete this course?</p>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button class="btn-custom" (click)="closeConfirmDialog()">No</button>
+    <button mat-button class="btn-gradient" (click)="deleteCourse()">Yes</button>
+  </div>
+</ng-template>

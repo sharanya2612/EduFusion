@@ -15,7 +15,7 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/home" fragment="trainers">Trainers</a>
       </li>
-      <li class="nav-item dropdown">
+      <li class="nav-item dropdown" *ngIf="!isLoggedIn">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCourses" role="button" data-bs-toggle="dropdown"
           aria-expanded="false">
           Courses
@@ -41,41 +41,19 @@
       <li class="nav-item">
         <a class="nav-link" routerLink="/home" fragment="contact">Contact</a>
       </li>
+      <!-- <li class="nav-item" *ngIf="!isLoggedIn">
+        <button class="btn btn-gradient login me-3" routerLink="/login">Login</button>
+      </li> -->
+      <li class="nav-item dropdown" *ngIf="isLoggedIn">
+        <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          <i class="fa fa-user-circle"></i>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+          <li><a class="dropdown-item" routerLink="/user-dashboard">My Profile</a></li>
+          <li><a class="dropdown-item" routerLink="/all-courses">Courses</a></li>
+          <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+        </ul>
+      </li>
     </ul>
   </div>
 </div>
-
-<!-- <mat-toolbar class="navbar">
-  <img src="assets/images/Logo.jpg" alt="Edufusion Logo" class="logo">
-  <span class="spacer"></span>
-  <nav>
-    <a mat-button routerLink="/home">Home</a>
-    <a mat-button routerLink="/home" fragment="services">Services</a>
-    <a mat-button routerLink="/home" fragment="trainers">Trainers</a>
-    <a mat-button [matMenuTriggerFor]="coursesMenu">Courses</a>
-    <a mat-button [matMenuTriggerFor]="blogMenu">Blog</a>
-    <a mat-button routerLink="/home" fragment="testimonials">Testimonials</a>
-    <a mat-button routerLink="/home" fragment="contact">Contact</a>
-  </nav>
-</mat-toolbar>
-
-<mat-menu #coursesMenu="matMenu">
-  <a mat-menu-item routerLink="/all-courses">All Courses</a>
-  <a mat-menu-item [matMenuTriggerFor]="popularCoursesMenu" >Popular Courses</a>
-</mat-menu>
-
-<mat-menu #popularCoursesMenu="matMenu">
-  <a mat-menu-item [routerLink]="['/all-courses']" fragment="1">Angular</a>
-  <a mat-menu-item [routerLink]="['/all-courses']" fragment="2">React</a>
-</mat-menu>
-
-<mat-menu #blogMenu="matMenu">
-  <a mat-menu-item [matMenuTriggerFor]="services">Services</a>
-  <a mat-menu-item routerLink="/blog/courses">Courses</a>
-</mat-menu>
-
-<mat-menu #services="matMenu">
-  <a mat-menu-item routerLink="/blog/course-management">Course Management</a>
-  <a mat-menu-item routerLink="/blog/interview-preparation">Interview Preparation</a>
-  <a mat-menu-item routerLink="/blog/project-management">Project Management</a>
-</mat-menu> -->

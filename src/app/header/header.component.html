@@ -3,8 +3,13 @@
     <div class="banner text-center mt-4">
       <h1 class="display-2 gradient-text">EduFusion</h1>
       <p class="lead text-warning tagline">Empowering Tomorrow's Tech Leaders</p>
+      <div *ngIf="!isLoggedIn">
       <button class="btn btn-gradient login me-3" routerLink="/login">Login</button>
       <button class="btn btn-custom about" routerLink="/home" fragment="about">About</button>
+    </div>
+    <div *ngIf="isLoggedIn">
+      <button class="btn btn-gradient login me-3" routerLink="/home" fragment="about">About</button>
+    </div>
     </div>
   </div>
 </header>

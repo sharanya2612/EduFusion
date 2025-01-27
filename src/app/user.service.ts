@@ -19,6 +19,11 @@ export class UserService {
   getUserById(id: string): Observable<any> {
     return this.http.get<any>(`${this.apiUrl}/${id}`);
   }
+
+  getUserDetails(): Observable<any> {
+    return this.http.get<any>(this.apiUrl);
+  }
+
   login(email: string, password: string): Observable<any> {
     return this.http.get<any[]>(this.apiUrl).pipe(
       map(users => users.find(user => user.email === email && user.password === password))
@@ -35,6 +40,9 @@ export class UserService {
     return this.http.get<any[]>(this.apiUrl).pipe(
       map(users => users.some(user => user.email === email))
     );
+  }
+  updateUser(id: string, userData: any): Observable<any> {
+    return this.http.put<any>(`${this.apiUrl}/${id}`, userData);
   }
 
   updatePassword(email: string, newPassword: string): Observable<any> {

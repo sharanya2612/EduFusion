@@ -17,7 +17,7 @@ export class AuthGuard implements CanActivate {
   ): Observable<boolean> | Promise<boolean> | boolean {
     const userId =sessionStorage.getItem('userId');
     if (!userId) {
-      this.router.navigate(['/']);
+      this.router.navigate(['/home']);
       return false;
     }
 
@@ -28,11 +28,11 @@ export class AuthGuard implements CanActivate {
           if (user.role === expectedRole) {
             return true;
           } else {
-            this.router.navigate(['/']);
+            this.router.navigate(['/home']);
             return false;
           }
         } else {
-          this.router.navigate(['/']);
+          this.router.navigate(['/home']);
           return false;
         }
       })

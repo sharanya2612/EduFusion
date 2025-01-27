@@ -10,20 +10,25 @@ import { NewPasswordComponent } from './new-password/new-password.component';
 import { UserDashboardComponent } from './user-dashboard/user-dashboard.component';
 import { TrainerDashboardComponent } from './trainer-dashboard/trainer-dashboard.component';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
+import { ProfileComponent } from './profile/profile.component';
+import { FaqComponent } from './faq/faq.component';
 import { AuthGuard } from './auth.guard';
+import { LoginGuard } from './login.guard';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, // Default route
   { path: 'home', component: HomeComponent },
-  {path: 'login',component: LoginComponent},
-  { path: 'signup',component: SignupComponent},
+  { path: 'login', component: LoginComponent, canActivate: [LoginGuard]},
+  { path: 'signup', component: SignupComponent,canActivate: [LoginGuard]},
   { path: 'all-courses', component: CoursesComponent },
   { path: 'popular-courses', component: PopularCoursesComponent},
   { path: 'forgot-password', component:ForgotPasswordComponent},
   { path: 'new-password', component: NewPasswordComponent},
+  { path: 'faq', component: FaqComponent},
   { path: 'user-dashboard', component: UserDashboardComponent, canActivate: [AuthGuard], data: { expectedRole: 'user' } },
   { path: 'trainer-dashboard', component: TrainerDashboardComponent, canActivate: [AuthGuard], data: { expectedRole: 'trainer' } },
   { path: 'admin-dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard], data: { expectedRole: 'admin' } },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], data: { expectedRole: 'user' } },
   // { path: 'blog', component: BlogComponent },
   // { path: 'other-options', component: OtherOptionsComponent }
 ];

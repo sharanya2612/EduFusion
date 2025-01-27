@@ -8,8 +8,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  // implements OnInit {
-  // ngOnInit(): void {
-  //   localStorage.clear();
-  // }
+// implements OnInit {
+//   isLoggedIn: boolean = false;
+
+//   ngOnInit(): void {
+//     this.isLoggedIn = !!sessionStorage.getItem('userId');
+//   }
 }
