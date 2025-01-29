@@ -4,6 +4,7 @@ import { UserService } from '../user.service';
 import { CourseService } from '../course.service';
 import { EnrollmentService } from '../enrollment.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-user-dashboard',
@@ -25,7 +26,8 @@ export class UserDashboardComponent implements OnInit {
     private enrollmentService: EnrollmentService,
     private courseService: CourseService,
     private dialog: MatDialog,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private snackBar: MatSnackBar // Inject MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -88,6 +90,15 @@ export class UserDashboardComponent implements OnInit {
       this.userService.updateUser(this.user.id, updatedUser).subscribe(() => {
         this.user = updatedUser;
         this.closeEditProfileDialog();
+        this.snackBar.open('Profile updated successfully!', 'Close', {
+          duration: 3000,
+          panelClass: ['snackbar-success']
+        });
+      }, error => {
+        this.snackBar.open('Failed to update profile. Please try again.', 'Close', {
+          duration: 3000,
+          panelClass: ['snackbar-error']
+        });
       });
     }
   }
@@ -111,6 +122,15 @@ export class UserDashboardComponent implements OnInit {
           this.enrollmentService.deleteEnrollmentById(enrollmentId).subscribe(() => {
             this.enrolledCourses = this.enrolledCourses.filter(course => course.id !== this.courseIdToDelete);
             this.closeConfirmDialog();
+            this.snackBar.open('Course deleted successfully!', 'Close', {
+              duration: 3000,
+              panelClass: ['snackbar-success']
+            });
+          }, error => {
+            this.snackBar.open('Failed to delete course. Please try again.', 'Close', {
+              duration: 3000,
+              panelClass: ['snackbar-error']
+            });
           });
         }
       });

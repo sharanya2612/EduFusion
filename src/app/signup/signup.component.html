@@ -55,10 +55,8 @@
   
       <div class="form-group">
         <label>Role Type: <span class="required">*</span></label>
-        <select class="form-control" formControlName="role">
-          <option value="">Select a role</option>
+        <select class="form-control" formControlName="role" readonly>
           <option value="user">User</option>
-          <option value="guest">Trainer</option>
         </select>
       </div>
       <div *ngIf="signupForm.controls['role'].invalid && (signupForm.controls['role'].dirty || signupForm.controls['role'].touched)" class="text-danger">

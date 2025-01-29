@@ -29,6 +29,7 @@ import { TrainerDashboardComponent } from './trainer-dashboard/trainer-dashboard
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FaqComponent } from './faq/faq.component';
+import { UpdateAdminPassComponent } from './update-admin-pass/update-admin-pass.component';
 
 
 
@@ -56,7 +57,8 @@ import { FaqComponent } from './faq/faq.component';
     TrainerDashboardComponent,
     AdminDashboardComponent,
     ProfileComponent,
-    FaqComponent
+    FaqComponent,
+    UpdateAdminPassComponent
   ],
   imports: [
     BrowserModule,

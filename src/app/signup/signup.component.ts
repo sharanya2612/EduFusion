@@ -20,11 +20,11 @@ export class SignupComponent {
 
   createForm() {
     this.signupForm = this.fb.group({
-      name: ['', [Validators.required, Validators.minLength(5), Validators.pattern('^[a-z|A-Z]+$')]],
+      name: ['', [Validators.required, Validators.minLength(5), Validators.pattern('^[a-zA-Z ]+$')]],
       email: ['', [Validators.required, Validators.email]],
       dob: ['', Validators.required],
       phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
-      role: ['', Validators.required],
+      role: ['user', Validators.required],
       address: [''],
       password: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', Validators.required],
@@ -56,6 +56,7 @@ export class SignupComponent {
         if (emailExists) {
           alert('Email already exists. Please use a different email.');
         } else {
+          this.signupForm.patchValue({ role: 'user' }); 
           this.userService.addUser(this.signupForm.value).subscribe(response => {
             alert('Successfully signed up!');
             this.router.navigate(['/login']);

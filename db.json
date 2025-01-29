@@ -1,8 +1,7 @@
 {
   "courses": [
     {
-      "id": "1",
-      "name": "Angular Basics",
+      "name": "Angular Basic",
       "category": "Web Development",
       "description": "Learn the basics of Angular framework.",
       "image": "assets/images/angular.png",
@@ -11,12 +10,11 @@
         "Web",
         "Development"
       ],
-      "rating": 4.5,
-      "badge": "Trending"
+      "trainerId": "a0de",
+      "id": "1"
     },
     {
-      "id": "2",
-      "name": "React Essentials",
+      "name": "React Essential",
       "category": "Web Development",
       "description": "Master the fundamentals of React.",
       "image": "assets/images/react.jpg",
@@ -25,8 +23,8 @@
         "JavaScript",
         "Frontend"
       ],
-      "rating": 4.7,
-      "badge": "Hot"
+      "trainerId": "a0de",
+      "id": "2"
     },
     {
       "id": "3",
@@ -94,8 +92,8 @@
       "rating": 4.6
     },
     {
-      "id": "8",
-      "name": "DevOps Essentials",
+      "trainerId": "a0de",
+      "name": "DevOps Essential",
       "category": "DevOps",
       "description": "Learn the basics of DevOps practices and tools.",
       "image": "assets/images/devops.jpg",
@@ -105,7 +103,8 @@
         "Automation"
       ],
       "rating": 4.5,
-      "badge": "New"
+      "badge": "New",
+      "id": "8"
     },
     {
       "id": "9",
@@ -159,12 +158,32 @@
         "Backend"
       ],
       "rating": 4.7
+    },
+    {
+      "id": "6a04",
+      "name": "PHP",
+      "category": "Web Development",
+      "description": "PHP for Beginers",
+      "image": "data:image/jpeg;base64,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",
+      "tags": [
+        "PHP",
+        "Backend"
+      ],
+      "trainerId": null
     }
   ],
   "users": [
     {
+      "id": "1",
+      "name": "Admin",
+      "email": "admin@edufusion.com",
+      "phone": "1234567890",
+      "role": "admin",
+      "password": "admin@2025"
+    },
+    {
       "id": "f61f",
-      "name": "Sharanya",
+      "name": "Sharanya S",
       "email": "sha@gmail.com",
       "dob": "2002-12-26",
       "phone": "7362836283",
@@ -175,16 +194,31 @@
       "terms": true
     },
     {
-      "id": "ef2c",
-      "name": "Sharanya",
-      "email": "sharanya@gmail.com",
-      "dob": "2025-01-21",
-      "phone": "3534263533",
+      "id": "e5c2",
+      "name": "Chaithra",
+      "email": "chai@gmail.com",
+      "dob": "2010-06-08",
+      "phone": "9478374773",
       "role": "user",
       "address": "Mangalore",
-      "password": "123456789",
-      "confirmPassword": "123456789",
+      "password": "chai@2002",
+      "confirmPassword": "chai@2002",
       "terms": true
+    },
+    {
+      "id": "a0de",
+      "name": "Sharanya Shetty",
+      "email": "sha@gmail.com",
+      "phone": 7743462624,
+      "password": "123456",
+      "role": "trainer"
+    }
+  ],
+  "trainers": [
+    {
+      "id": "a0de",
+      "designation": "Software Developer",
+      "expertise": "Full Stack, PHP, React Angular"
     }
   ],
   "contacts": [
@@ -199,6 +233,12 @@
       "name": "Sharanya",
       "email": "abc@gmail.com",
       "message": "Hello"
+    },
+    {
+      "id": "48e3",
+      "name": "Sharanya",
+      "email": "sharanyashetty2612@gmail.com",
+      "message": "I want to know more about the Angular Course"
     }
   ],
   "courses-enrolled": [
@@ -208,9 +248,9 @@
       "courseId": "1"
     },
     {
-      "id": "72cc",
+      "id": "4541",
       "userId": "f61f",
-      "courseId": "3"
+      "courseId": "6a04"
     }
   ]
 }

@@ -1,1 +1,191 @@
-<p>admin-dashboard works!</p>
+<div class="container">
+  <h1>Admin Dashboard</h1>
+  <div class="row">
+    <div class="button-group">
+      <button class="btn btn-primary" (click)="showUsers()">Users</button>
+      <button class="btn btn-primary" (click)="showTrainers()">Trainers</button>
+    </div>
+  </div>
+  <div class="row mt-4" *ngIf="showUserList">
+    <h2>Users</h2>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let user of users">
+        {{ user.name }} - {{ user.email }}
+        <i class="fa fa-trash" (click)="confirmDeleteUser(user.id)" style="cursor: pointer; float: right;"></i>
+      </li>
+    </ul>
+    <button class="btn btn-success mt-3" (click)="openUserDialog()">Add User</button>
+  </div>
+  <div class="row mt-4" *ngIf="showTrainerList">
+    <h2>Trainers</h2>
+    <ul class="list-group">
+      <li class="list-group-item" *ngFor="let trainer of trainers">
+        {{ trainer.name }} - {{ trainer.email }}
+        <i class="fa fa-trash" (click)="confirmDeleteTrainer(trainer.id)" style="cursor: pointer; float: right;"></i>
+      </li>
+    </ul>
+    <button class="btn btn-success mt-3" (click)="openTrainerDialog()">Add Trainer</button>
+  </div>
+  <div class="row mt-4">
+    <h2>Contact Messages</h2>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Email</th>
+          <th>Message</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let message of contactMessages">
+          <td>{{ message.name }}</td>
+          <td>{{ message.email }}</td>
+          <td>{{ message.message }}</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- User Dialog -->
+  <ng-template #userDialog>
+    <h1 mat-dialog-title>Add User</h1>
+    <div mat-dialog-content>
+      <form [formGroup]="userForm" (ngSubmit)="onSubmitUser()">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" id="name" formControlName="name" class="form-control">
+          <div *ngIf="userForm.get('name')?.invalid && (userForm.get('name')?.dirty || userForm.get('name')?.touched)" class="text-danger">
+            <div *ngIf="userForm.get('name')?.errors?.['required']">Name is required.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" formControlName="email" class="form-control">
+          <div *ngIf="userForm.get('email')?.invalid && (userForm.get('email')?.dirty || userForm.get('email')?.touched)" class="text-danger">
+            <div *ngIf="userForm.get('email')?.errors?.['required']">Email is required.</div>
+            <div *ngIf="userForm.get('email')?.errors?.['email']">Invalid email format.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="dob">Date of Birth</label>
+          <input type="date" id="dob" formControlName="dob" class="form-control">
+          <div *ngIf="userForm.get('dob')?.invalid && (userForm.get('dob')?.dirty || userForm.get('dob')?.touched)" class="text-danger">
+            <div *ngIf="userForm.get('dob')?.errors?.['required']">Date of Birth is required.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="text" id="phone" formControlName="phone" class="form-control">
+          <div *ngIf="userForm.get('phone')?.invalid && (userForm.get('phone')?.dirty || userForm.get('phone')?.touched)" class="text-danger">
+            <div *ngIf="userForm.get('phone')?.errors?.['required']">Phone is required.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input type="text" id="address" formControlName="address" class="form-control">
+          <div *ngIf="userForm.get('address')?.invalid && (userForm.get('address')?.dirty || userForm.get('address')?.touched)" class="text-danger">
+            <div *ngIf="userForm.get('address')?.errors?.['required']">Address is required.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input type="password" id="password" formControlName="password" class="form-control">
+          <div *ngIf="userForm.get('password')?.invalid && (userForm.get('password')?.dirty || userForm.get('password')?.touched)" class="text-danger">
+            <div *ngIf="userForm.get('password')?.errors?.['required']">Password is required.</div>
+            <div *ngIf="userForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters long.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" formControlName="confirmPassword" class="form-control" [ngClass]="{'is-invalid': userForm.hasError('passwordMismatch')}">
+          <div *ngIf="userForm.get('confirmPassword')?.invalid && (userForm.get('confirmPassword')?.dirty || userForm.get('confirmPassword')?.touched)" class="text-danger">
+            <div *ngIf="userForm.get('confirmPassword')?.errors?.['required']">Confirm Password is required.</div>
+            <div *ngIf="userForm.hasError('passwordMismatch')">Passwords do not match.</div>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" (click)="dialog.closeAll()">Cancel</button>
+          <button type="submit" class="btn btn-success" [disabled]="userForm.invalid">Add</button>
+        </div>
+      </form>
+    </div>
+  </ng-template>
+
+  <!-- Trainer Dialog -->
+  <ng-template #trainerDialog>
+    <h1 mat-dialog-title>Add Trainer</h1>
+    <div mat-dialog-content>
+      <form [formGroup]="trainerForm" (ngSubmit)="onSubmitTrainer()">
+        <div class="form-group">
+          <label for="trainerName">Name</label>
+          <input type="text" id="trainerName" formControlName="name" class="form-control">
+          <div *ngIf="trainerForm.get('name')?.invalid && (trainerForm.get('name')?.dirty || trainerForm.get('name')?.touched)" class="text-danger">
+            <div *ngIf="trainerForm.get('name')?.errors?.['required']">Name is required.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="trainerEmail">Email</label>
+          <input type="email" id="trainerEmail" formControlName="email" class="form-control">
+          <div *ngIf="trainerForm.get('email')?.invalid && (trainerForm.get('email')?.dirty || trainerForm.get('email')?.touched)" class="text-danger">
+            <div *ngIf="trainerForm.get('email')?.errors?.['required']">Email is required.</div>
+            <div *ngIf="trainerForm.get('email')?.errors?.['email']">Invalid email format.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="trainerPhone">Phone</label>
+          <input type="number" id="trainerPhone" formControlName="phone" class="form-control">
+          <div *ngIf="trainerForm.get('phone')?.invalid && (trainerForm.get('phone')?.dirty || trainerForm.get('phone')?.touched)" class="text-danger">
+            <div *ngIf="trainerForm.get('phone')?.errors?.['required']">Phone Number is required.</div>
+            <div *ngIf="trainerForm.get('phone')?.errors?.['pattern']">Enter valid phone number.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="trainerDesignation">Designation</label>
+          <input type="text" id="trainerDesignation" formControlName="designation" class="form-control">
+          <div *ngIf="trainerForm.get('designation')?.invalid && (trainerForm.get('designation')?.dirty || trainerForm.get('designation')?.touched)" class="text-danger">
+            <div *ngIf="trainerForm.get('designation')?.errors?.['required']">Designation is required.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="trainerExpertise">Areas of Expertise</label>
+          <input type="text" id="trainerExpertise" formControlName="expertise" class="form-control">
+          <div *ngIf="trainerForm.get('expertise')?.invalid && (trainerForm.get('expertise')?.dirty || trainerForm.get('expertise')?.touched)" class="text-danger">
+            <div *ngIf="trainerForm.get('expertise')?.errors?.['required']">Areas of Expertise are required.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="trainerPassword">Password</label>
+          <input type="password" id="trainerPassword" formControlName="password" class="form-control">
+          <div *ngIf="trainerForm.get('password')?.invalid && (trainerForm.get('password')?.dirty || trainerForm.get('password')?.touched)" class="text-danger">
+            <div *ngIf="trainerForm.get('password')?.errors?.['required']">Password is required.</div>
+            <div *ngIf="trainerForm.get('password')?.errors?.['minlength']">Password must be at least 6 characters long.</div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="trainerConfirmPassword">Confirm Password</label>
+          <input type="password" id="trainerConfirmPassword" formControlName="confirmPassword" class="form-control" [ngClass]="{'is-invalid': trainerForm.hasError('passwordMismatch')}">
+          <div *ngIf="trainerForm.get('confirmPassword')?.invalid && (trainerForm.get('confirmPassword')?.dirty || trainerForm.get('confirmPassword')?.touched)" class="text-danger">
+            <div *ngIf="trainerForm.get('confirmPassword')?.errors?.['required']">Confirm Password is required.</div>
+            <div *ngIf="trainerForm.hasError('passwordMismatch')">Passwords do not match.</div>
+          </div>
+        </div>
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" (click)="dialog.closeAll()">Cancel</button>
+          <button type="submit" class="btn btn-success" [disabled]="trainerForm.invalid">Add</button>
+        </div>
+      </form>
+    </div>
+  </ng-template>
+
+  <!-- Confirm Dialog -->
+  <ng-template #confirmDialog>
+    <h1 mat-dialog-title>Confirm Delete</h1>
+    <div mat-dialog-content>
+      <p>Are you sure you want to delete this item?</p>
+    </div>
+    <div mat-dialog-actions>
+      <button type="button" class="btn btn-secondary" (click)="dialog.closeAll()">Cancel</button>
+      <button type="button" class="btn btn-danger" (click)="deleteUserId !== null ? deleteUser() : deleteTrainer()">Delete</button>
+    </div>
+  </ng-template>
+</div>
