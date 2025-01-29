@@ -1,0 +1,111 @@
+.course-page {
+    max-width: 1200px;
+    margin: 120px auto 0;
+    padding: 30px;
+    margin-top: 90px;
+    margin-bottom: 60px;
+  }
+  
+  h2 {
+    color: #FB0079;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .search-form {
+    margin-top: 30px;
+  }
+  
+  .input-group {
+    display: flex;
+  }
+  
+  .form-control {
+    border-top-left-radius: 20px; /* Rounded corners */
+    border-bottom-left-radius: 20px; /* Rounded corners */
+  }
+  
+  .btn-gradient {
+    border-top-right-radius: 20px; /* Rounded corners */
+    border-bottom-right-radius: 20px; /* Rounded corners */
+    background: linear-gradient(to right, #FB0079, #FF9C30); /* Gradient background */
+    color: white;
+    border: none;
+    cursor: pointer;
+  }
+  
+  .text-danger {
+    color: red; /* Validation messages in red */
+    display: block;
+    margin-top: 10px;
+  }
+  
+  .course-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+  }
+  
+  .course-card {
+    width: 300px;
+    position: relative;
+  }
+  
+  .course-card img {
+    width: 100%;
+    height: 200px; /* Set a fixed height */
+    object-fit: cover; /* Ensure the image covers the entire area without distortion */
+  }
+  
+  .mat-card-title {
+    font-weight: bold;
+  }
+  
+  .mat-chip {
+    margin: 5px;
+  }
+  
+  .chip-gradient {
+    background: linear-gradient(to right, #FB0079, #FF9C30);
+    color: white;
+  }
+  
+  /* .badge-position {
+    position: relative;
+    top: -10px;
+  } */
+  
+  .badge-overlay {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #ff3030;
+    color: white;
+    padding: 5px 10px;
+    font-size: 1rem; /* Increased font size */
+    font-weight: bold;
+    border-radius: 5px;
+    z-index: 1; /* Ensure it appears above other elements */
+    animation: badgeAnimation 2s infinite; /* Apply animation */
+  }
+  
+  @keyframes badgeAnimation {
+    0%, 100% {
+      transform: scale(1);
+    }
+    50% {
+      transform: scale(1.2);
+    }
+  }
+  
+  .scrolling-text {
+    color: #FB0079;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin-bottom: 20px;
+  }
+  
+  .scrolling-text-link {
+    text-decoration: none;
+  }

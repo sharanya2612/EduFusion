@@ -10,7 +10,8 @@
         "Web",
         "Development"
       ],
-      "trainerId": "a0de",
+      "rating": 4.9,
+      "badge": "Trending",
       "id": "1"
     },
     {
@@ -23,7 +24,8 @@
         "JavaScript",
         "Frontend"
       ],
-      "trainerId": "a0de",
+      "rating": 4.8,
+      "badge": "Hot",
       "id": "2"
     },
     {
@@ -169,7 +171,9 @@
         "PHP",
         "Backend"
       ],
-      "trainerId": null
+      "trainerId": null,
+      "rating": 4.5,
+      "badge": ""
     }
   ],
   "users": [

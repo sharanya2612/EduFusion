@@ -1,7 +1,8 @@
-import { Component,OnInit,TemplateRef, ViewChild } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChild } from '@angular/core';
 import { ContactService } from '../contact.service';
 import { UserService } from '../user.service';
 import { TrainerService } from '../trainers.service';
+import { CourseService } from '../course.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -10,38 +11,46 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 @Component({
   selector: 'app-admin-dashboard',
   standalone: false,
-  
+
   templateUrl: './admin-dashboard.component.html',
   styleUrl: './admin-dashboard.component.css'
 })
 export class AdminDashboardComponent implements OnInit {
   @ViewChild('userDialog') userDialog!: TemplateRef<any>;
   @ViewChild('trainerDialog') trainerDialog!: TemplateRef<any>;
+  @ViewChild('courseDialog') courseDialog!: TemplateRef<any>;
   @ViewChild('confirmDialog') confirmDialog!: TemplateRef<any>;
 
   contactMessages: any[] = [];
   users: any[] = [];
   trainers: any[] = [];
+  courses: any[] = [];
   showUserList: boolean = false;
   showTrainerList: boolean = false;
+  showCourseList: boolean = false;
+  showContactMessageList: boolean = false;
   userForm!: FormGroup;
   trainerForm!: FormGroup;
+  courseForm!: FormGroup;
   deleteUserId: number | null = null;
   deleteTrainerId: number | null = null;
+  selectedCourse: any = null;
 
   constructor(
     private fb: FormBuilder,
     private contactService: ContactService,
     private userService: UserService,
     private trainerService: TrainerService,
+    private courseService: CourseService,
     public dialog: MatDialog,
     public snackBar: MatSnackBar
-  ) {}
+  ) { }
 
   ngOnInit(): void {
     this.loadContacts();
     this.loadUsers();
     this.loadTrainers();
+    this.loadCourses();
 
     this.userForm = this.fb.group({
       name: ['', Validators.required],
@@ -53,7 +62,7 @@ export class AdminDashboardComponent implements OnInit {
       confirmPassword: ['', Validators.required]
     }, { validator: this.passwordMatchValidator });
 
-    this.trainerForm = this.fb.group({
+     this.trainerForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
@@ -62,6 +71,12 @@ export class AdminDashboardComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required]
     }, { validator: this.passwordMatchValidator });
+
+    this.courseForm = this.fb.group({
+      name: ['', Validators.required],
+      rating: [null, [Validators.required, Validators.min(1), Validators.max(5)]],
+      badge: ['']
+    });
   }
 
   passwordMatchValidator(form: FormGroup) {
@@ -84,12 +99,8 @@ export class AdminDashboardComponent implements OnInit {
 
   loadTrainers(): void {
     this.userService.getUsers().subscribe(users => {
-      // Filter users with the role 'trainer'
       const trainerUsers = users.filter(user => user.role === 'trainer');
-
-      // Load additional trainer details from the trainer service
       this.trainerService.getTrainers().subscribe(trainerDetails => {
-        // Merge the basic trainer data with the additional details
         this.trainers = trainerUsers.map(trainerUser => {
           const details = trainerDetails.find(detail => detail.id === trainerUser.id);
           return {
@@ -102,19 +113,42 @@ export class AdminDashboardComponent implements OnInit {
     });
   }
 
+  loadCourses(): void {
+    this.courseService.getCourses().subscribe(data => {
+      this.courses = data;
+    });
+  }
+
   showUsers(): void {
     this.showUserList = true;
     this.showTrainerList = false;
+    this.showCourseList = false;
+    this.showContactMessageList = false;
   }
 
   showTrainers(): void {
     this.showUserList = false;
     this.showTrainerList = true;
+    this.showCourseList = false;
+    this.showContactMessageList = false;
+  }
+
+  showCourses(): void {
+    this.showUserList = false;
+    this.showTrainerList = false;
+    this.showCourseList = true;
+    this.showContactMessageList = false;
+  }
+
+  showContactMessages(): void {
+    this.showUserList = false;
+    this.showTrainerList = false;
+    this.showCourseList = false;
+    this.showContactMessageList = true;
   }
 
   openUserDialog(): void {
     const dialogRef = this.dialog.open(this.userDialog);
-
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.addUser(result);
@@ -124,7 +158,6 @@ export class AdminDashboardComponent implements OnInit {
 
   openTrainerDialog(): void {
     const dialogRef = this.dialog.open(this.trainerDialog);
-
     dialogRef.afterClosed().subscribe(result => {
       if (result) {
         this.addTrainer(result);
@@ -132,11 +165,22 @@ export class AdminDashboardComponent implements OnInit {
     });
   }
 
+  openCourseDialog(course?: any): void {
+    if (course) {
+      this.selectedCourse = course;
+      this.courseForm.patchValue(course);
+    } else {
+      this.selectedCourse = null;
+      this.courseForm.reset();
+    }
+    this.dialog.open(this.courseDialog);
+  }
+
   addUser(newUser: any): void {
     newUser.role = 'user';
     this.userService.addUser(newUser).subscribe(() => {
       this.loadUsers();
-      this.dialog.closeAll(); // Close the dialog after adding the user
+      this.dialog.closeAll();
       this.snackBar.open('User added successfully!', 'Close', {
         duration: 3000,
         panelClass: ['snackbar-success']
@@ -162,13 +206,40 @@ export class AdminDashboardComponent implements OnInit {
 
       this.trainerService.addTrainer(trainerExpertise).subscribe(() => {
         this.loadTrainers();
-        this.dialog.closeAll(); // Close the dialog after adding the trainer
+        this.dialog.closeAll();
         this.snackBar.open('Trainer added successfully!', 'Close', {
           duration: 3000,
           panelClass: ['snackbar-success']
         });
       });
     });
+  }
+
+  addCourse(newCourse: any): void {
+    if (this.selectedCourse) {
+      const updatedCourse = {
+        ...this.selectedCourse,
+        rating: newCourse.rating,
+        badge: newCourse.badge
+      };
+      this.courseService.updateCourse(this.selectedCourse.id, updatedCourse).subscribe(() => {
+        this.loadCourses();
+        this.dialog.closeAll();
+        this.snackBar.open('Course updated successfully!', 'Close', {
+          duration: 3000,
+          panelClass: ['snackbar-success']
+        });
+      });
+    } else {
+      this.courseService.addCourse(newCourse).subscribe(() => {
+        this.loadCourses();
+        this.dialog.closeAll();
+        this.snackBar.open('Course added successfully!', 'Close', {
+          duration: 3000,
+          panelClass: ['snackbar-success']
+        });
+      });
+    }
   }
 
   onSubmitUser(): void {
@@ -185,7 +256,13 @@ export class AdminDashboardComponent implements OnInit {
     }
   }
 
-  
+  onSubmitCourse(): void {
+    if (this.courseForm.valid) {
+      const newCourse = this.courseForm.value;
+      this.addCourse(newCourse);
+    }
+  }
+
   confirmDeleteUser(userId: number): void {
     this.deleteUserId = userId;
     this.dialog.open(this.confirmDialog);
@@ -200,7 +277,7 @@ export class AdminDashboardComponent implements OnInit {
     if (this.deleteUserId !== null) {
       this.userService.deleteUser(this.deleteUserId).subscribe(() => {
         this.loadUsers();
-        this.dialog.closeAll(); // Close the confirmation dialog
+        this.dialog.closeAll();
         this.snackBar.open('User deleted successfully!', 'Close', {
           duration: 3000,
           panelClass: ['snackbar-success']
@@ -215,7 +292,7 @@ export class AdminDashboardComponent implements OnInit {
         this.userService.deleteUser(this.deleteTrainerId!).subscribe(() => {
           this.loadTrainers();
           this.loadUsers();
-          this.dialog.closeAll(); // Close the confirmation dialog
+          this.dialog.closeAll();
           this.snackBar.open('Trainer deleted successfully!', 'Close', {
             duration: 3000,
             panelClass: ['snackbar-success']
@@ -224,5 +301,4 @@ export class AdminDashboardComponent implements OnInit {
       });
     }
   }
-
 }

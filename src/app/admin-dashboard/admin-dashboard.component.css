@@ -150,11 +150,38 @@ h1 {
 .table-striped tbody tr:nth-of-type(odd) {
   background-color: #f9f9f9;
 }
+.list-group-item i.fa {
+  color: #FB0079; /* Makes the icons pink */
+  cursor: pointer;
+}
 
 .snackbar-success {
   background-color: #4CAF50;
   color: white;
 }
+.badge-group {
+  display: flex;
+  gap: 5px;
+}
+
+.badge {
+  padding: 5px 10px;
+  border-radius: 15px;
+  color: white;
+}
+
+.badge-new {
+  background-color: #28a745; /* Green */
+}
+
+.badge-hot {
+  background-color: #dc3545; /* Red */
+}
+
+.badge-trending {
+  background-color: #ffc107; /* Yellow */
+}
+
 /* Responsive styles */
 @media (max-width: 768px) {
   .container {
