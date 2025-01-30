@@ -6,7 +6,7 @@
   <h2 class="text-center">Search Courses</h2>
   <form #searchForm="ngForm" (ngSubmit)="onSearch(searchForm.value)" class="search-form">
     <div class="input-group mb-3">
-      <input type="text" id="search" name="search" placeholder="Enter course name" [(ngModel)]="searchQuery"
+      <input type="text" id="search" name="search" placeholder="Search by course name, category, description" [(ngModel)]="searchQuery"
         #search="ngModel" class="form-control" required />
       <button type="submit" [disabled]="searchForm.invalid" class="btn btn-gradient">
         Search

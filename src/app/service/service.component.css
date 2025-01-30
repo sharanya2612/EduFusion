@@ -1,11 +1,12 @@
+/* Existing styles */
 .services-offered {
   text-align: center;
   padding: 20px;
 }
 
-h2{
+h2 {
   font-weight: bold;
-  color:  #FB0079
+  color: #FB0079;
 }
 
 .services-container {
@@ -71,4 +72,76 @@ h2{
   color: #FB0079; /* Pink color for the icons */
   display: block;
   margin-bottom: 10px;
+}
+
+/* Modal styles */
+.modal {
+  display: block;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 600px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  text-align: left;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.service-details h2 {
+  color: #FB0079;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.service-details img.service-image {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.service-details ul {
+  list-style-type: disc;
+  padding-left: 20px;
+  margin-bottom: 10px;
+}
+
+.service-details ul li {
+  margin-bottom: 5px;
+}
+
+.service-details .contact-link {
+  color: #FB0079;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.service-details .contact-link:hover {
+  text-decoration: underline;
 }

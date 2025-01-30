@@ -33,6 +33,12 @@ import { UpdateAdminPassComponent } from './update-admin-pass/update-admin-pass.
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { TermOfServiceComponent } from './term-of-service/term-of-service.component';
 import { CookiePolicyComponent } from './cookie-policy/cookie-policy.component';
+import { ModalComponent } from './modal/modal.component';
+import { CourseManagementDialogComponent } from './course-management-dialog/course-management-dialog.component';
+import { ProjectManagementDialogComponent } from './project-management-dialog/project-management-dialog.component';
+import { InterviewPreparationDialogComponent } from './interview-preparation-dialog/interview-preparation-dialog.component';
+import { LearningAnalyticsDialogComponent } from './learning-analytics-dialog/learning-analytics-dialog.component';
+import { MatDialogModule } from '@angular/material/dialog';
 
 
 
@@ -64,7 +70,12 @@ import { CookiePolicyComponent } from './cookie-policy/cookie-policy.component';
     UpdateAdminPassComponent,
     PrivacyPolicyComponent,
     TermOfServiceComponent,
-    CookiePolicyComponent
+    CookiePolicyComponent,
+    ModalComponent,
+    CourseManagementDialogComponent,
+    ProjectManagementDialogComponent,
+    InterviewPreparationDialogComponent,
+    LearningAnalyticsDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -72,6 +83,7 @@ import { CookiePolicyComponent } from './cookie-policy/cookie-policy.component';
     FormsModule,
     ReactiveFormsModule,
     MaterialModule,
+    MatDialogModule, 
     HttpClientModule
   ],
   providers: [
