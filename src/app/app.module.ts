@@ -30,6 +30,9 @@ import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.compo
 import { ProfileComponent } from './profile/profile.component';
 import { FaqComponent } from './faq/faq.component';
 import { UpdateAdminPassComponent } from './update-admin-pass/update-admin-pass.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { TermOfServiceComponent } from './term-of-service/term-of-service.component';
+import { CookiePolicyComponent } from './cookie-policy/cookie-policy.component';
 
 
 
@@ -58,7 +61,10 @@ import { UpdateAdminPassComponent } from './update-admin-pass/update-admin-pass.
     AdminDashboardComponent,
     ProfileComponent,
     FaqComponent,
-    UpdateAdminPassComponent
+    UpdateAdminPassComponent,
+    PrivacyPolicyComponent,
+    TermOfServiceComponent,
+    CookiePolicyComponent
   ],
   imports: [
     BrowserModule,

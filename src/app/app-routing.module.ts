@@ -12,6 +12,9 @@ import { TrainerDashboardComponent } from './trainer-dashboard/trainer-dashboard
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 import { ProfileComponent } from './profile/profile.component';
 import { FaqComponent } from './faq/faq.component';
+import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
+import { TermOfServiceComponent } from './term-of-service/term-of-service.component';
+import { CookiePolicyComponent } from './cookie-policy/cookie-policy.component';
 import { AuthGuard } from './auth.guard';
 import { LoginGuard } from './login.guard';
 
@@ -25,6 +28,9 @@ const routes: Routes = [
   { path: 'forgot-password', component:ForgotPasswordComponent},
   { path: 'new-password', component: NewPasswordComponent},
   { path: 'faq', component: FaqComponent},
+  { path: 'privacy-policy', component:PrivacyPolicyComponent},
+  { path: 'terms-of-service', component: TermOfServiceComponent},
+  { path: 'cookie-policy', component: CookiePolicyComponent},
   { path: 'user-dashboard', component: UserDashboardComponent, canActivate: [AuthGuard], data: { expectedRole: 'user' } },
   { path: 'trainer-dashboard', component: TrainerDashboardComponent, canActivate: [AuthGuard], data: { expectedRole: 'trainer' } },
   { path: 'admin-dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard], data: { expectedRole: 'admin' } },

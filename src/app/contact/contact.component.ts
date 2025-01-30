@@ -11,7 +11,7 @@ import { EmailService } from '../email.service';
   styleUrl: './contact.component.css'
 })
 export class ContactComponent {
-  companyemail="support@hello.com";
+  companyemail="support@edufusion.com";
   contactForm!: FormGroup;
   successMessage: string | null = null;
   errorMessage: string | null = null;
