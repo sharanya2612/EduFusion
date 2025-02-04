@@ -5,6 +5,12 @@ import { CourseService } from '../course.service';
 import { EnrollmentService } from '../enrollment.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { Store } from '@ngrx/store';
+import { Observable, take } from 'rxjs';
+import { User } from '../../store/model/user.model';
+import { AppState } from '../../store/state/app.state';
+import * as UserActions from '../../store/action/user.action';
+
 
 @Component({
   selector: 'app-user-dashboard',
@@ -14,7 +20,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   styleUrl: './user-dashboard.component.css'
 })
 export class UserDashboardComponent implements OnInit {
-  user: any = {};
+  user$: Observable<User | null>;
   enrolledCourses: any[] = [];
   editProfileForm!: FormGroup;
   @ViewChild('confirmDialog') confirmDialog!: TemplateRef<any>;
@@ -22,18 +28,21 @@ export class UserDashboardComponent implements OnInit {
   courseIdToDelete: string | null = null;
 
   constructor(
+    private store: Store<AppState>,
     private userService: UserService,
     private enrollmentService: EnrollmentService,
     private courseService: CourseService,
     private dialog: MatDialog,
     private fb: FormBuilder,
     private snackBar: MatSnackBar // Inject MatSnackBar
-  ) {}
+  ) {
+    this.user$ = this.store.select(state => state.user.user);
+  }
 
   ngOnInit(): void {
     const userId = sessionStorage.getItem('userId');
     if (userId) {
-      this.fetchUserDetails(userId);
+      this.store.dispatch(UserActions.loadUser({ userId }));
       this.fetchEnrolledCourses(userId);
     } else {
       console.error('User ID not found in session storage');
@@ -45,25 +54,35 @@ export class UserDashboardComponent implements OnInit {
       phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
       role: [{ value: '', disabled: true }]
     });
-  }
 
-  fetchUserDetails(userId: string): void {
-    this.userService.getUserById(userId).subscribe(user => {
+    this.user$.pipe(take(1)).subscribe(user => {
       if (user) {
-        this.user = user;
         this.editProfileForm.patchValue({
           name: user.name,
           dob: user.dob,
           phone: user.phone,
           role: user.role
         });
-      } else {
-        console.error('User data is undefined');
       }
-    }, error => {
-      console.error('Error fetching user details:', error);
     });
   }
+  // fetchUserDetails(userId: string): void {
+  //   this.userService.getUserById(userId).subscribe(user => {
+  //     if (user) {
+  //       this.user = user;
+  //       this.editProfileForm.patchValue({
+  //         name: user.name,
+  //         dob: user.dob,
+  //         phone: user.phone,
+  //         role: user.role
+  //       });
+  //     } else {
+  //       console.error('User data is undefined');
+  //     }
+  //   }, error => {
+  //     console.error('Error fetching user details:', error);
+  //   });
+  // }
 
   fetchEnrolledCourses(userId: string): void {
     this.enrollmentService.getEnrollments().subscribe(enrollments => {
@@ -76,7 +95,18 @@ export class UserDashboardComponent implements OnInit {
     });
   }
 
+ 
   editProfile(): void {
+    this.user$.pipe(take(1)).subscribe(user => {
+      if (user) {
+        this.editProfileForm.patchValue({
+          name: user.name,
+          dob: user.dob,
+          phone: user.phone,
+          role: user.role
+        });
+      }
+    });
     this.dialog.open(this.editProfileDialog);
   }
 
@@ -84,24 +114,40 @@ export class UserDashboardComponent implements OnInit {
     this.dialog.closeAll();
   }
 
+  // updateProfile(): void {
+  //   if (this.editProfileForm.valid) {
+  //     const updatedUser = { ...this.user, ...this.editProfileForm.value };
+  //     this.userService.updateUser(this.user.id, updatedUser).subscribe(() => {
+  //       this.user = updatedUser;
+  //       this.closeEditProfileDialog();
+  //       this.snackBar.open('Profile updated successfully!', 'Close', {
+  //         duration: 3000,
+  //         panelClass: ['snackbar-success']
+  //       });
+  //     }, error => {
+  //       this.snackBar.open('Failed to update profile. Please try again.', 'Close', {
+  //         duration: 3000,
+  //         panelClass: ['snackbar-error']
+  //       });
+  //     });
+  //   }
+  // }
   updateProfile(): void {
     if (this.editProfileForm.valid) {
-      const updatedUser = { ...this.user, ...this.editProfileForm.value };
-      this.userService.updateUser(this.user.id, updatedUser).subscribe(() => {
-        this.user = updatedUser;
-        this.closeEditProfileDialog();
-        this.snackBar.open('Profile updated successfully!', 'Close', {
-          duration: 3000,
-          panelClass: ['snackbar-success']
-        });
-      }, error => {
-        this.snackBar.open('Failed to update profile. Please try again.', 'Close', {
-          duration: 3000,
-          panelClass: ['snackbar-error']
-        });
+      this.user$.subscribe(user => {
+        if (user) {
+          const updatedUser = { ...user, ...this.editProfileForm.value };
+          this.store.dispatch(UserActions.updateUser({ user: updatedUser }));
+          this.closeEditProfileDialog();
+          this.snackBar.open('Profile updated successfully!', 'Close', {
+            duration: 3000,
+            panelClass: ['snackbar-success']
+          });
+        }
       });
     }
   }
+
 
   confirmDelete(courseId: string): void {
     this.courseIdToDelete = courseId;

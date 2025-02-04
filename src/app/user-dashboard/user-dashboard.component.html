@@ -1,5 +1,5 @@
 <div class="container">
-  <h2 class="gradient-text">Welcome, {{ user.name }}</h2><br>
+  <h2 class="gradient-text">Welcome, {{ (user$ | async)?.name }}</h2><br>
   <div class="row">
     <div class="col-md-4">
       <div class="card" @fadeIn>
@@ -8,11 +8,11 @@
         </div>
         <div class="card-body profile-info">
           <i class="fas fa-user-circle profile-icon"></i>
-          <p><i class="fas fa-user icon"></i><strong>Name:</strong> {{ user.name }}</p>
-          <p><i class="fas fa-envelope icon"></i><strong>Email:</strong> {{ user.email }}</p>
-          <p><i class="fas fa-birthday-cake icon"></i><strong>Date of Birth:</strong> {{ user.dob }}</p>
-          <p><i class="fas fa-phone icon"></i><strong>Phone:</strong> {{ user.phone }}</p>
-          <p><i class="fas fa-user-tag icon"></i><strong>Role:</strong> {{ user.role }}</p><br>
+          <p><i class="fas fa-user icon"></i><strong>Name:</strong> {{ (user$ | async)?.name }}</p>
+          <p><i class="fas fa-envelope icon"></i><strong>Email:</strong> {{ (user$ | async)?.email }}</p>
+          <p><i class="fas fa-birthday-cake icon"></i><strong>Date of Birth:</strong> {{ (user$ | async)?.dob }}</p>
+          <p><i class="fas fa-phone icon"></i><strong>Phone:</strong> {{ (user$ | async)?.phone }}</p>
+          <p><i class="fas fa-user-tag icon"></i><strong>Role:</strong> {{ (user$ | async)?.role }}</p><br>
           <button mat-button class="btn-gradient" (click)="editProfile()">Edit Profile</button>
         </div>
       </div>

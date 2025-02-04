@@ -15,6 +15,7 @@ import { FaqComponent } from './faq/faq.component';
 import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.component';
 import { TermOfServiceComponent } from './term-of-service/term-of-service.component';
 import { CookiePolicyComponent } from './cookie-policy/cookie-policy.component';
+import { ChatComponent } from './chat/chat.component';
 import { AuthGuard } from './auth.guard';
 import { LoginGuard } from './login.guard';
 
@@ -31,10 +32,11 @@ const routes: Routes = [
   { path: 'privacy-policy', component:PrivacyPolicyComponent},
   { path: 'terms-of-service', component: TermOfServiceComponent},
   { path: 'cookie-policy', component: CookiePolicyComponent},
+  { path: 'help-chat', component: ChatComponent},
   { path: 'user-dashboard', component: UserDashboardComponent, canActivate: [AuthGuard], data: { expectedRole: 'user' } },
   { path: 'trainer-dashboard', component: TrainerDashboardComponent, canActivate: [AuthGuard], data: { expectedRole: 'trainer' } },
   { path: 'admin-dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard], data: { expectedRole: 'admin' } },
-  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], data: { expectedRole: 'user' } },
+  { path: 'profile', component: ProfileComponent, canActivate: [AuthGuard], data: { expectedRole: 'user' } }
   // { path: 'blog', component: BlogComponent },
   // { path: 'other-options', component: OtherOptionsComponent }
 ];

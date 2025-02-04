@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, isDevMode } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -39,7 +39,13 @@ import { ProjectManagementDialogComponent } from './project-management-dialog/pr
 import { InterviewPreparationDialogComponent } from './interview-preparation-dialog/interview-preparation-dialog.component';
 import { LearningAnalyticsDialogComponent } from './learning-analytics-dialog/learning-analytics-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
-
+import { ChatComponent } from './chat/chat.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { userReducer } from '../store/reducer/user.reducer';
+import { UserEffects } from '../store/effects/user.effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+// import { environment } from '../environments/environment';
 
 
 @NgModule({
@@ -75,7 +81,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     CourseManagementDialogComponent,
     ProjectManagementDialogComponent,
     InterviewPreparationDialogComponent,
-    LearningAnalyticsDialogComponent
+    LearningAnalyticsDialogComponent,
+    ChatComponent
   ],
   imports: [
     BrowserModule,
@@ -84,7 +91,10 @@ import { MatDialogModule } from '@angular/material/dialog';
     ReactiveFormsModule,
     MaterialModule,
     MatDialogModule, 
-    HttpClientModule
+    HttpClientModule, 
+    StoreModule.forRoot({ user: userReducer }),
+    EffectsModule.forRoot([UserEffects]),
+    StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() })
   ],
   providers: [
     provideAnimationsAsync()

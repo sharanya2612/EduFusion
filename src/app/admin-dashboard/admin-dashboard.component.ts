@@ -6,7 +6,8 @@ import { CourseService } from '../course.service';
 import { MatDialog } from '@angular/material/dialog';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-
+import { Chart, registerables } from 'chart.js';
+import { ChartService } from '../chart.service';
 
 @Component({
   selector: 'app-admin-dashboard',
@@ -35,6 +36,7 @@ export class AdminDashboardComponent implements OnInit {
   deleteUserId: number | null = null;
   deleteTrainerId: number | null = null;
   selectedCourse: any = null;
+  enrollmentChart: any;
 
   constructor(
     private fb: FormBuilder,
@@ -43,14 +45,33 @@ export class AdminDashboardComponent implements OnInit {
     private trainerService: TrainerService,
     private courseService: CourseService,
     public dialog: MatDialog,
-    public snackBar: MatSnackBar
-  ) { }
+    public snackBar: MatSnackBar,
+    private chartService: ChartService
+  ) { Chart.register(...registerables);}
+
+  backgroundColors: string[] = [
+    'rgba(75, 192, 192, 0.2)',
+    'rgba(255, 99, 132, 0.2)',
+    'rgba(54, 162, 235, 0.2)',
+    'rgba(255, 206, 86, 0.2)',
+    'rgba(153, 102, 255, 0.2)'
+  ];
+  borderColors: string[] = [
+    'rgba(75, 192, 192, 1)',
+    'rgba(255, 99, 132, 1)',
+    'rgba(54, 162, 235, 1)',
+    'rgba(255, 206, 86, 1)',
+    'rgba(153, 102, 255, 1)'
+  ];
+
 
   ngOnInit(): void {
     this.loadContacts();
     this.loadUsers();
     this.loadTrainers();
     this.loadCourses();
+    this.fetchEnrollmentData();
+
 
     this.userForm = this.fb.group({
       name: ['', Validators.required],
@@ -300,5 +321,56 @@ export class AdminDashboardComponent implements OnInit {
         });
       });
     }
+  }
+  fetchEnrollmentData() {
+    this.chartService.getEnrollmentData().subscribe(data => {
+      const courseEnrollmentCount = this.processEnrollmentData(data.enrollments, data.courses);
+      this.renderChart(courseEnrollmentCount);
+    });
+  }
+
+  processEnrollmentData(enrollments: any[], courses: any[]): { [key: string]: number } {
+    const courseEnrollmentCount: { [key: string]: number } = {};
+
+    enrollments.forEach(enrollment => {
+      const course = courses.find(course => course.id === enrollment.courseId);
+      if (course) {
+        if (courseEnrollmentCount[course.name]) {
+          courseEnrollmentCount[course.name]++;
+        } else {
+          courseEnrollmentCount[course.name] = 1;
+        }
+      }
+    });
+
+    return courseEnrollmentCount;
+  }
+
+  renderChart(courseEnrollmentCount: { [key: string]: number }) {
+    const courseNames = Object.keys(courseEnrollmentCount);
+    const enrolledStudents = Object.values(courseEnrollmentCount);
+
+    this.enrollmentChart = new Chart('enrollmentChart', {
+      type: 'bar',
+      data: {
+        labels: courseNames,
+        datasets: [{
+          label: '',
+          data: enrolledStudents,
+          backgroundColor: this.backgroundColors,
+          borderColor: this.borderColors,
+          // backgroundColor: 'rgba(75, 192, 192, 0.2)',
+          // borderColor: 'rgba(75, 192, 192, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
   }
 }

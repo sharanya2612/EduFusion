@@ -1,0 +1,14 @@
+<div class="chat-container">
+    <h1 class="chat-heading">EduFusion Chat Support</h1>
+    <h2 class="chat-subheading">We're here to help you!</h2>
+    <div class="chat-messages">
+        <div *ngFor="let message of messages"
+            [ngClass]="{'user-message': message.sender === 'user', 'bot-message': message.sender === 'bot'}">
+            {{ message.text }}
+        </div>
+    </div>
+    <div class="chat-input-container">
+        <input type="text" [(ngModel)]="userMessage" placeholder="Type a message..." />
+        <button (click)="sendMessage()">Send</button>
+    </div>
+</div>

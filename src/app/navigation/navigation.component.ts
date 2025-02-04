@@ -52,4 +52,16 @@ export class NavigationComponent implements OnInit {
     this.cdr.detectChanges(); // Trigger change detection
     this.router.navigate(['/home']);
   }
+  navigateToDashboard() {
+    const userId = sessionStorage.getItem('userId');
+    if (userId) {
+      this.userService.getUserById(userId).subscribe(user => {
+        if (user.role === 'trainer') {
+          this.router.navigate(['/trainer-dashboard']);
+        } else {
+          this.router.navigate(['/user-dashboard']);
+        }
+      });
+    }
+  }
 }

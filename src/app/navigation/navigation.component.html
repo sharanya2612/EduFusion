@@ -13,7 +13,7 @@
         <a class="nav-link" routerLink="/home" fragment="services">Services</a>
       </li>
       <li class="nav-item" *ngIf="role !== 'admin'">
-        <a class="nav-link" routerLink="/home" fragment="trainers">Trainers</a>
+        <a class="nav-link" routerLink="/home" fragment="trainers">Team</a>
       </li>
       <li class="nav-item dropdown" *ngIf="!isLoggedIn && role !== 'admin'">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCourses" role="button" data-bs-toggle="dropdown"
@@ -46,7 +46,7 @@
           <i class="fa fa-user-circle"></i>
         </a>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-          <li><a class="dropdown-item" routerLink="/user-dashboard">My Profile</a></li>
+          <li><a class="dropdown-item" (click)="navigateToDashboard()">My Profile</a></li>
           <li *ngIf="role !== 'trainer'"><a class="dropdown-item" routerLink="/all-courses">Enroll Courses</a></li>
           <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
         </ul>

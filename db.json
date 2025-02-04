@@ -173,7 +173,7 @@
       ],
       "trainerId": null,
       "rating": 4.5,
-      "badge": ""
+      "badge": "New"
     }
   ],
   "users": [
@@ -255,6 +255,26 @@
       "id": "4541",
       "userId": "f61f",
       "courseId": "6a04"
+    },
+    {
+      "id": "f7bf",
+      "userId": "f61f",
+      "courseId": "2"
+    },
+    {
+      "id": "ee8c",
+      "userId": "f61f",
+      "courseId": "9"
+    },
+    {
+      "id": "95a1",
+      "userId": "e5c2",
+      "courseId": "2"
+    },
+    {
+      "id": "ac46",
+      "userId": "e5c2",
+      "courseId": "1"
     }
   ]
 }

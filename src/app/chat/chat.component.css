@@ -1,0 +1,110 @@
+/* Container styles */
+.chat-container {
+    width: 500px;
+    border: 1px solid #2c3e50;
+    margin: 120px auto 0;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    background-color: #ecf0f1;
+    margin-bottom: 10px;
+    text-align: center;
+  }
+  
+  /* Heading styles */
+  .chat-heading {
+    color: #FB0079;
+    font-weight: bold;
+    margin-bottom: 10px;
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+  .chat-subheading {
+    color: #2c3e50;
+    margin-bottom: 20px;
+    animation: fadeIn 2s ease-in-out;
+  }
+  
+  /* Messages container */
+  .chat-messages {
+    height: 250px;
+    overflow-y: auto;
+    margin-bottom: 15px;
+    padding-right: 10px;
+    text-align: left;
+  }
+  
+  /* User message styles */
+  .user-message {
+    text-align: right;
+    background-color: #3498db;
+    color: white;
+    padding: 10px;
+    border-radius: 15px;
+    margin: 10px 0;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  /* Bot message styles */
+  .bot-message {
+    text-align: left;
+    background-color: #95a5a6;
+    color: white;
+    padding: 10px;
+    border-radius: 15px;
+    margin: 10px 0;
+    animation: fadeIn 0.5s ease-in-out;
+  }
+  
+  /* Input container styles */
+  .chat-input-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Input field styles */
+  input[type="text"] {
+    width: calc(100% - 80px);
+    padding: 12px;
+    border: 1px solid #bdc3c7;
+    border-radius: 10px;
+    font-size: 16px;
+    transition: border-color 0.3s ease;
+  }
+  
+  input[type="text"]:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+  }
+  
+  /* Button styles */
+  button {
+    margin-left: 10px;
+    width: 70px;
+    padding: 12px;
+    background: linear-gradient(to right, #FB0079, #FF9C30);
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #c0392b;
+    transform: scale(1.05);
+  }
+  
+  /* Animation for messages */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
