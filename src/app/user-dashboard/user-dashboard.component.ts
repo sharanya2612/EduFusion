@@ -134,7 +134,7 @@ export class UserDashboardComponent implements OnInit {
   // }
   updateProfile(): void {
     if (this.editProfileForm.valid) {
-      this.user$.subscribe(user => {
+      this.user$.pipe(take(1)).subscribe(user => {
         if (user) {
           const updatedUser = { ...user, ...this.editProfileForm.value };
           this.store.dispatch(UserActions.updateUser({ user: updatedUser }));
@@ -147,7 +147,6 @@ export class UserDashboardComponent implements OnInit {
       });
     }
   }
-
 
   confirmDelete(courseId: string): void {
     this.courseIdToDelete = courseId;
