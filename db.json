@@ -15,7 +15,7 @@
       "id": "1"
     },
     {
-      "name": "React Essential",
+      "name": "React Essentials",
       "category": "Web Development",
       "description": "Master the fundamentals of React.",
       "image": "assets/images/react.jpg",
@@ -187,7 +187,7 @@
     },
     {
       "id": "f61f",
-      "name": "Sharanya S",
+      "name": "Sharanya",
       "email": "sha@gmail.com",
       "dob": "2002-12-26",
       "phone": "7362836283",
@@ -252,11 +252,6 @@
       "courseId": "1"
     },
     {
-      "id": "4541",
-      "userId": "f61f",
-      "courseId": "6a04"
-    },
-    {
       "id": "f7bf",
       "userId": "f61f",
       "courseId": "2"
@@ -275,6 +270,11 @@
       "id": "ac46",
       "userId": "e5c2",
       "courseId": "1"
+    },
+    {
+      "id": "1570",
+      "userId": "f61f",
+      "courseId": "6a04"
     }
   ]
 }
