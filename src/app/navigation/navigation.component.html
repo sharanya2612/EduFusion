@@ -41,6 +41,9 @@
       <li class="nav-item" *ngIf="role !== 'admin'">
         <a class="nav-link" routerLink="/home" fragment="contact">Contact</a>
       </li>
+      <li class="nav-item" *ngIf="role !== 'admin'">
+        <a class="nav-link" routerLink="help-chat">AI Support</a>
+      </li>
       <li class="nav-item dropdown" *ngIf="isLoggedIn && role !== 'admin'">
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa fa-user-circle"></i>

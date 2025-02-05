@@ -1,4 +1,5 @@
 import { NgModule, isDevMode } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -86,6 +87,7 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
   ],
   imports: [
     BrowserModule,
+    CommonModule,
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,

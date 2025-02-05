@@ -1,4 +1,4 @@
-<div class="chat-container">
+<!-- <div class="chat-container">
     <h1 class="chat-heading">EduFusion Chat Support</h1>
     <h2 class="chat-subheading">We're here to help you!</h2>
     <div class="chat-messages">
@@ -11,4 +11,27 @@
         <input type="text" [(ngModel)]="userMessage" placeholder="Type a message..." />
         <button (click)="sendMessage()">Send</button>
     </div>
-</div>
+</div> -->
+<div class="chat-container">
+    <h1 class="chat-heading">Ask EduFusion AI</h1>
+  
+    <!-- User Input Section -->
+    <div class="chat-input-container">
+      <input type="text" [(ngModel)]="userQuery" placeholder="Ask a question about EduFusion...">
+      <button (click)="handleUserQuery()" [disabled]="loading">
+        {{ loading ? 'Loading...' : 'Send' }}
+      </button>
+    </div>
+  
+    <!-- AI Response Section -->
+    <div *ngIf="aiResponse" class="chat-response">
+      <h3>AI Response:</h3>
+      <p>{{ aiResponse }}</p>
+    </div>
+  
+    <!-- Loading Spinner -->
+    <div *ngIf="loading" class="loading-spinner">
+      <span>Loading...</span>
+    </div>
+  </div>
+  

@@ -13,6 +13,10 @@ export class CourseService {
     return this.http.get<any>(this.apiUrl);
   }
 
+  loadCourses(forceReload: boolean = false): Observable<any[]> {
+    return this.http.get<any[]>(this.apiUrl);
+  }
+  
   addCourse(course: any): Observable<any> {
     return this.http.post<any>(this.apiUrl, course);
   }
