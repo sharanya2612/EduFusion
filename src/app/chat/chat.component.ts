@@ -65,9 +65,8 @@ export class ChatComponent implements OnInit {
     ],
     contact: {
       email: 'support@edufusion.com',
-      phone: '+1234567890',
-      address: '123 EduFusion Lane, Learning City, EduState, 12345',
-      mapLink: 'https://maps.google.com/?q=123+EduFusion+Lane'
+      phone: '+1-202-555-0127',
+      address: '123 Main St, Mangaluru, Karnataka'
     },
     trainerInfo: {
       email: 'trainers@edufusion.com',
@@ -135,6 +134,10 @@ export class ChatComponent implements OnInit {
       - Cookie Policy: ${this.siteInfo.sections[9].description}
       - Join the Team: ${this.siteInfo.sections[10].description}
       - Sign Up & Login: ${this.siteInfo.sections[11].description}
+      - Phone Number: ${this.siteInfo.contact.phone}
+      - Address: ${this.siteInfo.contact.address}
+      - Email: ${this.siteInfo.contact.email}
+      - Trainer: ${this.siteInfo.trainerInfo.email} || ${this.siteInfo.trainerInfo.description}
     
     The user asks: "${this.userQuery}".
     

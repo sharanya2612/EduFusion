@@ -35,10 +35,6 @@ import { PrivacyPolicyComponent } from './privacy-policy/privacy-policy.componen
 import { TermOfServiceComponent } from './term-of-service/term-of-service.component';
 import { CookiePolicyComponent } from './cookie-policy/cookie-policy.component';
 import { ModalComponent } from './modal/modal.component';
-import { CourseManagementDialogComponent } from './course-management-dialog/course-management-dialog.component';
-import { ProjectManagementDialogComponent } from './project-management-dialog/project-management-dialog.component';
-import { InterviewPreparationDialogComponent } from './interview-preparation-dialog/interview-preparation-dialog.component';
-import { LearningAnalyticsDialogComponent } from './learning-analytics-dialog/learning-analytics-dialog.component';
 import { MatDialogModule } from '@angular/material/dialog';
 import { ChatComponent } from './chat/chat.component';
 import { StoreModule } from '@ngrx/store';
@@ -46,6 +42,7 @@ import { EffectsModule } from '@ngrx/effects';
 import { userReducer } from '../store/reducer/user.reducer';
 import { UserEffects } from '../store/effects/user.effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ServiceDescComponent } from './service-desc/service-desc.component';
 // import { environment } from '../environments/environment';
 
 
@@ -79,11 +76,8 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     TermOfServiceComponent,
     CookiePolicyComponent,
     ModalComponent,
-    CourseManagementDialogComponent,
-    ProjectManagementDialogComponent,
-    InterviewPreparationDialogComponent,
-    LearningAnalyticsDialogComponent,
-    ChatComponent
+    ChatComponent,
+    ServiceDescComponent
   ],
   imports: [
     BrowserModule,

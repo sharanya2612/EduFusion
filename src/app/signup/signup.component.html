@@ -98,7 +98,7 @@
   
       <div class="form-group">
         <input type="checkbox" formControlName="terms" id="terms">
-        <label for="terms">I agree to the <a href="#" class="terms">Terms and Conditions</a></label>
+        <label for="terms">I agree to the <a routerLink="/privacy-policy" class="terms">Terms and Conditions</a></label>
       </div>
       <div *ngIf="signupForm.controls['terms'].invalid && (signupForm.controls['terms'].dirty || signupForm.controls['terms'].touched)" class="text-danger">
         <div *ngIf="signupForm.controls['terms'].errors?.['required']">

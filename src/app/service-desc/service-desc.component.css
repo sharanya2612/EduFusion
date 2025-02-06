@@ -1,0 +1,102 @@
+  /* Detailed Sections */
+  .container {
+    padding: 20px;
+    margin: 120px auto 0;
+  }
+  
+  .service-detail {
+    display: block;
+    text-align: center;
+    padding: 20px;
+    animation: fadeIn 0.5s ease-in-out;
+  }  
+  .service-detail h2 {
+    color: #FB0079;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .service-detail .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .service-detail .image-section {
+    width: 45%;
+    animation: slideInRight 2s ease-in-out;
+  }
+  
+  .service-detail img.service-image {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    margin-bottom: 10px;
+  }
+
+  #learning-analytics .image-section, #project-management .image-section{
+    animation: slideInLeft 2s ease-in-out;
+  }
+  
+  .service-detail .text-section {
+    width: 45%;
+    text-align: justify;
+    animation: slideInLeft 2s ease-in-out;
+  }
+
+  #learning-analytics .text-section, #project-management .text-section{
+    animation: slideInRight 2s ease-in-out;
+  }
+  
+  
+  .service-detail ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 10px;
+  }
+  
+  .service-detail ul li {
+    margin-bottom: 5px;
+  }
+  
+  .service-detail .back-link {
+    color: #FB0079;
+    font-weight: bold;
+    text-decoration: none;
+  }
+  
+  .service-detail .back-link:hover {
+    text-decoration: underline;
+  }
+  
+  /* Animations */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  @keyframes slideInLeft {
+    from {
+      transform: translateX(-100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
+  
+  @keyframes slideInRight {
+    from {
+      transform: translateX(100%);
+    }
+    to {
+      transform: translateX(0);
+    }
+  }
