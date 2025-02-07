@@ -2,6 +2,7 @@ import { Component, Inject, OnInit, ViewChild, TemplateRef } from '@angular/core
 import { MAT_DIALOG_DATA, MatDialogRef, MatDialog } from '@angular/material/dialog';
 import { UserService } from '../user.service';
 import { EnrollmentService } from '../enrollment.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-enroll-dialog',
@@ -19,7 +20,8 @@ export class EnrollDialogComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: any,
     private dialog: MatDialog,
     private userService: UserService,
-    private enrollmentService: EnrollmentService
+    private enrollmentService: EnrollmentService,
+    public snackBar:MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -46,7 +48,11 @@ export class EnrollDialogComponent implements OnInit {
 
   confirmEnrollment(): void {
     if (this.isAlreadyEnrolled) {
-      alert('You are already enrolled in this course.');
+      // alert('You are already enrolled in this course.');
+      this.snackBar.open('You are already enrolled in this course.', 'Close', {
+          duration: 3000,
+          panelClass: ['snackbar-error']
+        });
     } else {
       this.dialog.open(this.confirmDialog);
     }

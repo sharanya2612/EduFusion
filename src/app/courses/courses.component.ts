@@ -73,6 +73,10 @@ export class CoursesComponent implements OnInit {
       });
     } else {
       alert('You need to log in to enroll in a course.');
+      // this.snackBar.open('You need to log in to enroll in a course.', 'Close', {
+      //   duration: 3000,
+      //   panelClass: ['snackbar-error']
+      // });
       this.router.navigate(['/login']);
     }
   }

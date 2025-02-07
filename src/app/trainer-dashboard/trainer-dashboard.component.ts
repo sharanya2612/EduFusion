@@ -207,6 +207,11 @@ export class TrainerDashboardComponent implements OnInit {
   updateProfile(): void {
     if (this.editProfileForm.valid) {
       const trainerId = sessionStorage.getItem('userId');
+      const email = this.editProfileForm.value.email;
+      this.userService.checkEmailExists(email).subscribe(emailExists => {
+        if (emailExists && email !== this.user.email) {
+          alert('Email already exists. Please use a different email.');
+        } else {
       if (trainerId) {
         const userData = {
           id: trainerId,
@@ -233,6 +238,8 @@ export class TrainerDashboardComponent implements OnInit {
         });
       }
     }
+  });
+  }
   }
 
   closeEditProfileDialog(): void {

@@ -79,7 +79,7 @@ export class AdminDashboardComponent implements OnInit {
       dob: ['', Validators.required],
       phone: ['', Validators.required],
       address: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', Validators.required]
     }, { validator: this.passwordMatchValidator });
 
@@ -89,7 +89,7 @@ export class AdminDashboardComponent implements OnInit {
       phone: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
       designation: ['', Validators.required],
       expertise: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]],
+      password: ['', [Validators.required, Validators.minLength(8)]],
       confirmPassword: ['', Validators.required]
     }, { validator: this.passwordMatchValidator });
 
@@ -264,18 +264,32 @@ export class AdminDashboardComponent implements OnInit {
   }
 
   onSubmitUser(): void {
+    const email = this.userForm.get('email')?.value;
+    this.userService.checkEmailExists(email).subscribe(emailExists => {
+      if (emailExists) {
+        alert('Email already exists. Please use a different email.');
+      } else {
     if (this.userForm.valid) {
       const newUser = this.userForm.value;
       this.addUser(newUser);
     }
   }
+});
+}
 
   onSubmitTrainer(): void {
+    const email = this.trainerForm.get('email')?.value;
+    this.userService.checkEmailExists(email).subscribe(emailExists => {
+      if (emailExists) {
+        alert('Email already exists. Please use a different email.');
+      } else {
     if (this.trainerForm.valid) {
       const newTrainer = this.trainerForm.value;
       this.addTrainer(newTrainer);
     }
   }
+});
+}
 
   onSubmitCourse(): void {
     if (this.courseForm.valid) {
@@ -367,7 +381,10 @@ export class AdminDashboardComponent implements OnInit {
       options: {
         scales: {
           y: {
-            beginAtZero: true
+            beginAtZero: true,
+            ticks: {
+              stepSize: 1 // This ensures the scale uses whole numbers
+            }
           }
         }
       }
