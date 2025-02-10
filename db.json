@@ -215,6 +215,18 @@
       "phone": 7743462624,
       "password": "12345678",
       "role": "trainer"
+    },
+    {
+      "id": "e85c",
+      "name": "Sharanya",
+      "email": "sharanya.s@impelsys.com",
+      "dob": "2002-12-26",
+      "phone": "9473656434",
+      "role": "user",
+      "address": "Mangalore",
+      "password": "sha@2025#",
+      "confirmPassword": "sha@2025#",
+      "terms": true
     }
   ],
   "trainers": [

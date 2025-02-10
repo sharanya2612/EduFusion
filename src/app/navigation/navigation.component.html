@@ -7,22 +7,25 @@
   <div class="collapse navbar-collapse" id="navbarNav">
     <ul class="navbar-nav ms-auto">
       <li class="nav-item" *ngIf="role !== 'admin'">
-        <a class="nav-link" routerLink="/home">Home</a>
+        <a class="nav-link" routerLink="/home"><i class="fa fa-home"></i>  Home</a>
       </li>
       <li class="nav-item" *ngIf="role !== 'admin'">
-        <a class="nav-link" routerLink="/home" fragment="services">Services</a>
+        <a class="nav-link" routerLink="/home" fragment="services"><i class="fa fa-gear"></i>  Services</a>
       </li>
       <li class="nav-item" *ngIf="role !== 'admin'">
-        <a class="nav-link" routerLink="/home" fragment="trainers">Team</a>
+        <a class="nav-link" routerLink="/home" fragment="trainers"><i class="fa fa-users"></i>  Team</a>
+      </li>
+      <li class="nav-item" *ngIf="role !== 'admin'">
+        <a class="nav-link" routerLink="/home" fragment="testimonials"><i class="fa fa-commenting"></i>  Testimonials</a>
       </li>
       <li class="nav-item dropdown" *ngIf="!isLoggedIn && role !== 'admin'">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownCourses" role="button" data-bs-toggle="dropdown"
-          aria-expanded="false">
-          Courses
+          aria-expanded="false"><i class="fa fa-book"></i> 
+           Courses
         </a>
         <ul class="dropdown-menu" aria-labelledby="navbarDropdownCourses">
-          <li><a class="dropdown-item" routerLink="/all-courses">All Courses</a></li>
-          <li><a class="dropdown-item" routerLink="/popular-courses">Popular Courses</a></li>
+          <li><a class="dropdown-item" routerLink="/all-courses"><i class="fa fa-graduation-cap"></i> All Courses</a></li>
+          <li><a class="dropdown-item" routerLink="/popular-courses"> <i class="fa fa-fire"></i> Popular Courses</a></li>
         </ul>
       </li>
       <!-- <li class="nav-item dropdown" *ngIf="role !== 'admin'">
@@ -36,32 +39,29 @@
         </ul>
       </li> -->
       <li class="nav-item" *ngIf="role !== 'admin'">
-        <a class="nav-link" routerLink="/home" fragment="testimonials">Testimonials</a>
-      </li>
-      <li class="nav-item" *ngIf="role !== 'admin'">
-        <a class="nav-link" routerLink="/home" fragment="contact">Contact</a>
+        <a class="nav-link" routerLink="/home" fragment="contact"><i class="fa fa-phone"></i>  Contact</a>
       </li>
       <li class="nav-item" *ngIf="isLoggedIn && role !== 'admin'">
-        <a class="nav-link" routerLink="help-chat">AI Support</a>
+        <a class="nav-link" routerLink="help-chat"><i class="fa fa-question-circle"></i> Ai Support</a>
       </li>
       <li class="nav-item dropdown" *ngIf="isLoggedIn && role !== 'admin'">
         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
           <i class="fa fa-user-circle"></i>
         </a>
         <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
-          <li><a class="dropdown-item" (click)="navigateToDashboard()">My Profile</a></li>
-          <li *ngIf="role !== 'trainer'"><a class="dropdown-item" routerLink="/all-courses">Enroll Courses</a></li>
-          <li><a class="dropdown-item" (click)="logout()">Logout</a></li>
+          <li><a class="dropdown-item" (click)="navigateToDashboard()"> <i class="fa fa-user-circle"></i>  My Profile</a></li>
+          <li *ngIf="role !== 'trainer'"><a class="dropdown-item" routerLink="/all-courses"><i class="fa fa-check-square"></i> Enroll Courses</a></li>
+          <li><a class="dropdown-item" (click)="logout()"><i class="fa fa-sign-out"></i>  Logout</a></li>
         </ul>
       </li>
       <li class="nav-item" *ngIf="role === 'admin'">
-        <a class="nav-link" routerLink="/admin-dashboard">Dashboard</a>
+        <a class="nav-link" routerLink="/admin-dashboard"> <i class="fa fa-user-circle"></i> Dashboard</a>
       </li>
       <li class="nav-item" *ngIf="role === 'admin'">
-        <a class="nav-link" routerLink="/all-courses">All Courses</a>
+        <a class="nav-link" routerLink="/all-courses"><i class="fa fa-book"></i> All Courses</a>
       </li>
       <li class="nav-item" *ngIf="role === 'admin'">
-        <a class="nav-link" (click)="logout()">Logout</a>
+        <a class="nav-link" (click)="logout()"><i class="fa fa-sign-out"></i> Logout</a>
       </li>
     </ul>
   </div>
