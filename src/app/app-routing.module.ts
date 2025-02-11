@@ -35,7 +35,7 @@ const routes: Routes = [
   { path: 'privacy-policy', component:PrivacyPolicyComponent},
   { path: 'terms-of-service', component: TermOfServiceComponent},
   { path: 'cookie-policy', component: CookiePolicyComponent},
-  { path: 'help-chat', component: ChatComponent,canActivate: [AuthGuard], data: { expectedRole: 'user' }},
+  { path: 'help-chat', component: ChatComponent},
   { path: 'user-dashboard', component: UserDashboardComponent, canActivate: [AuthGuard], data: { expectedRole: 'user' } },
   { path: 'trainer-dashboard', component: TrainerDashboardComponent, canActivate: [AuthGuard], data: { expectedRole: 'trainer' } },
   { path: 'admin-dashboard', component: AdminDashboardComponent, canActivate: [AuthGuard], data: { expectedRole: 'admin' } },

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router,ActivatedRoute } from '@angular/router';
 import { UserService } from '../user.service';
 
 
@@ -15,23 +15,24 @@ import { UserService } from '../user.service';
 
 export class NewPasswordComponent implements OnInit {
   newPasswordForm!: FormGroup;
-  email!: string;
   token!: string;
+  email!: string;
 
-  constructor(private fb: FormBuilder, private userService: UserService, private router: Router) { }
+  constructor(private fb: FormBuilder, private userService: UserService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
-    this.email = localStorage.getItem('resetEmail') || '';
-    this.token = localStorage.getItem('resetToken') || '';
-    const storedExpirationTime = parseInt(localStorage.getItem('resetTokenExpiration') || '0', 100000);
-
-    if (!this.email || !this.token || new Date().getTime() > storedExpirationTime) {
-      alert('Invalid or expired reset link. Redirecting to home page.');
-      localStorage.removeItem('resetToken');
-      localStorage.removeItem('resetEmail');
-      localStorage.removeItem('resetTokenExpiration');
+    this.token = this.route.snapshot.queryParams['token'];
+    this.userService.validateResetToken(this.token).subscribe(response => {
+      if (response.valid) {
+        this.email = response.email;
+      } else {
+        alert('Invalid or expired reset link. Redirecting to home page.');
+        this.router.navigate(['/home']);
+      }
+    }, error => {
+      alert(error.message);
       this.router.navigate(['/home']);
-    }
+    });
 
     this.newPasswordForm = this.fb.group({
       newPassword: ['', [Validators.required, Validators.minLength(8)]],
@@ -48,14 +49,11 @@ export class NewPasswordComponent implements OnInit {
   onSubmit(): void {
     if (this.newPasswordForm.valid) {
       const newPassword = this.newPasswordForm.value.newPassword;
-      this.userService.updatePassword(this.email, newPassword).subscribe(() => {
-        alert('Password updated successfully!');
-        localStorage.removeItem('resetToken');
-        localStorage.removeItem('resetEmail');
-        localStorage.removeItem('resetTokenExpiration');
-        this.router.navigate(['/login']);
-      }, error => {
-        console.error('Error updating password', error);
+      this.userService.resetPassword(this.token, newPassword).subscribe(response => {
+          alert('Password updated successfully!');
+          this.router.navigate(['/login']);
+        }, error => {
+        alert(error.message);
       });
     }
   }

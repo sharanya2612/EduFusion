@@ -182,7 +182,8 @@
       "email": "admin@edufusion.com",
       "phone": "1234567890",
       "role": "admin",
-      "password": "admin@2025"
+      "password": "admin@2025",
+      "resetToken": null
     },
     {
       "id": "f61f",
@@ -224,9 +225,10 @@
       "phone": "9473656434",
       "role": "user",
       "address": "Mangalore",
-      "password": "sha@2025#",
+      "password": "sha@2025",
       "confirmPassword": "sha@2025#",
-      "terms": true
+      "terms": true,
+      "resetToken": null
     }
   ],
   "trainers": [
