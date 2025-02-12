@@ -74,35 +74,36 @@ export class UserService {
         
         const user = users[0];
         const resetToken = uuidv4();
-        // const resetTokenExpiry = new Date(Date.now() + 36000000).toISOString(); // 1 hour expiry
+        const resetTokenExpiry = new Date(Date.now() + 36000000).toISOString(); 
+        // // 1 hour expiry
         
         return this.http.patch<any>(`${this.apiUrl}/${user.id}`, {
-          resetToken
-          // resetTokenExpiry
+          resetToken,
+          resetTokenExpiry
         });
       })
     );
   }
-  validateResetToken(token: string): Observable<any> {
-    return this.http.get<any[]>(`${this.apiUrl}?resetToken=${token}`).pipe(
-      switchMap(users => {
-        if (users.length === 0) throw new Error('Invalid token');
+  // validateResetToken(token: string): Observable<any> {
+  //   return this.http.get<any[]>(`${this.apiUrl}?resetToken=${token}`).pipe(
+  //     switchMap(users => {
+  //       if (users.length === 0) throw new Error('Invalid token');
         
-        const user = users.find(u => u.resetToken === token);
-        if (!user) throw new Error('Invalid token');
+  //       const user = users.find(u => u.resetToken === token);
+  //       if (!user) throw new Error('Invalid token');
         // const now = new Date();
         
         // if (user.resetTokenExpiry < now) {
         //   throw new Error('Token expired');
         // }
 
-        return new Observable(observer => {
-          observer.next({ valid: true, email: user.email });
-          observer.complete();
-        });
-      })
-    );
-  }
+  //       return new Observable(observer => {
+  //         observer.next({ valid: true, email: user.email });
+  //         observer.complete();
+  //       });
+  //     })
+  //   );
+  // }
 
   resetPassword(token: string, newPassword: string): Observable<any> {
     return this.http.get<any[]>(`${this.apiUrl}?resetToken=${token}`).pipe(
@@ -113,14 +114,15 @@ export class UserService {
         if (!user) throw new Error('Invalid token');
   
         // Uncomment and use if token expiration check is needed
-        // const now = new Date();
-        // if (new Date(user.resetTokenExpiry) < now) {
-        //   throw new Error('Token expired');
-        // }
+        const now = new Date();
+        if (new Date(user.resetTokenExpiry) < now) {
+          throw new Error('Token expired');
+        }
   
         return this.http.patch<any>(`${this.apiUrl}/${user.id}`, {
           password: newPassword,
-          resetToken: null
+          resetToken: null,
+          resetTokenExpiry: null
         });
       })
     );

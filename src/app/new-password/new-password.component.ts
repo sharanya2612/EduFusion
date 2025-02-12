@@ -22,17 +22,17 @@ export class NewPasswordComponent implements OnInit {
 
   ngOnInit(): void {
     this.token = this.route.snapshot.queryParams['token'];
-    this.userService.validateResetToken(this.token).subscribe(response => {
-      if (response.valid) {
-        this.email = response.email;
-      } else {
-        alert('Invalid or expired reset link. Redirecting to home page.');
-        this.router.navigate(['/home']);
-      }
-    }, error => {
-      alert(error.message);
-      this.router.navigate(['/home']);
-    });
+    // this.userService.validateResetToken(this.token).subscribe(response => {
+    //   if (response.valid) {
+    //     this.email = response.email;
+    //   } else {
+    //     alert('Invalid or expired reset link. Redirecting to home page.');
+    //     this.router.navigate(['/home']);
+    //   }
+    // }, error => {
+    //   alert(error.message);
+    //   this.router.navigate(['/home']);
+    // });
 
     this.newPasswordForm = this.fb.group({
       newPassword: ['', [Validators.required, Validators.minLength(8)]],
