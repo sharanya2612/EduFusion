@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ContactService } from '../contact.service';
 import { EmailService } from '../email.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-contact',
@@ -16,7 +17,7 @@ export class ContactComponent {
   successMessage: string | null = null;
   errorMessage: string | null = null;
 
-  constructor(private fb: FormBuilder, private contactService: ContactService,private emailService: EmailService) {
+  constructor(private fb: FormBuilder, private contactService: ContactService,private emailService: EmailService, public snackBar: MatSnackBar,) {
     this.createForm();
   }
 
@@ -50,6 +51,10 @@ export class ContactComponent {
             this.errorMessage = 'There was an issue sending the email. Please try again.';
             this.successMessage = null;
             console.error('Email sending failed:', error);
+          });
+          this.snackBar.open('Message submitted sucessfully!', 'Close', {
+            duration: 3000,
+            panelClass: ['snackbar-success']
           });
         this.contactForm.reset();
       }, error => {
